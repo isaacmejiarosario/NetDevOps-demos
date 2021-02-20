@@ -1,0 +1,12 @@
+<configuration>
+    <system>
+        <ntp>
+        {% for ntp in host.facts.ntp_servers %}
+            <server>
+                <name>{{ ntp }}</name>
+            </server>
+        {% endfor %}
+        </ntp>
+    </system>
+</configuration>
+

@@ -1,0 +1,429 @@
+2021-02-20 12:04:21,534 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 5 hosts
+2021-02-20 12:04:21,808 - nornir.core.task -    ERROR -      start() - Host 'JPE2': task 'napalm_configure' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1360, in open
+    "use_filter": self._use_filter,
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 168, in connect
+    return connect_ssh(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 135, in connect_ssh
+    session.connect(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/transport/ssh.py", line 291, in connect
+    raise SSHError("Could not open socket to %s:%s" % (host, port))
+ncclient.transport.errors.SSHError: Could not open socket to 172.20.0.210:22
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 29, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/napalm/junos/junos.py", line 127, in open
+    self.device.open(auto_probe=self.auto_probe)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1379, in open
+    raise EzErrors.ConnectRefusedError(self)
+jnpr.junos.exception.ConnectRefusedError: ConnectRefusedError(172.20.0.210)
+
+2021-02-20 12:04:21,808 - nornir.core.task -    ERROR -      start() - Host 'JPE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 16, in load_vars
+    basic_config(task)
+  File "ntp.py", line 25, in basic_config
+    task.run(task=napalm_configure, configuration= output)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_configure (failed)
+
+
+2021-02-20 12:04:26,617 - nornir.core.task -    ERROR -      start() - Host 'DIST2': task 'napalm_configure' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 931, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.6/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 92, in _netmiko_open
+    **netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/netmiko/ssh_dispatcher.py", line 315, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 346, in __init__
+    self._open()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 351, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 953, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 10.10.20.176:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 29, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py", line 170, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 95, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.10.20.176
+
+2021-02-20 12:04:26,617 - nornir.core.task -    ERROR -      start() - Host 'DIST2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 16, in load_vars
+    basic_config(task)
+  File "ntp.py", line 25, in basic_config
+    task.run(task=napalm_configure, configuration= output)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_configure (failed)
+
+
+2021-02-20 12:04:26,620 - nornir.core.task -    ERROR -      start() - Host 'DIST1': task 'napalm_configure' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 931, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.6/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 92, in _netmiko_open
+    **netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/netmiko/ssh_dispatcher.py", line 315, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 346, in __init__
+    self._open()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 351, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 953, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 10.10.20.175:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 29, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py", line 170, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 95, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.10.20.175
+
+2021-02-20 12:04:26,620 - nornir.core.task -    ERROR -      start() - Host 'DIST1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 16, in load_vars
+    basic_config(task)
+  File "ntp.py", line 25, in basic_config
+    task.run(task=napalm_configure, configuration= output)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_configure (failed)
+
+
+2021-02-20 12:08:40,860 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 5 hosts
+2021-02-20 12:08:41,080 - nornir.core.task -    ERROR -      start() - Host 'JPE2': task 'napalm_configure' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1360, in open
+    "use_filter": self._use_filter,
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 168, in connect
+    return connect_ssh(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 135, in connect_ssh
+    session.connect(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/transport/ssh.py", line 291, in connect
+    raise SSHError("Could not open socket to %s:%s" % (host, port))
+ncclient.transport.errors.SSHError: Could not open socket to 172.20.0.210:22
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 29, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/napalm/junos/junos.py", line 127, in open
+    self.device.open(auto_probe=self.auto_probe)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1379, in open
+    raise EzErrors.ConnectRefusedError(self)
+jnpr.junos.exception.ConnectRefusedError: ConnectRefusedError(172.20.0.210)
+
+2021-02-20 12:08:41,081 - nornir.core.task -    ERROR -      start() - Host 'JPE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 16, in load_vars
+    basic_config(task)
+  File "ntp.py", line 25, in basic_config
+    task.run(task=napalm_configure, configuration= output)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_configure (failed)
+
+
+2021-02-20 12:08:45,898 - nornir.core.task -    ERROR -      start() - Host 'DIST1': task 'napalm_configure' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 931, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.6/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 92, in _netmiko_open
+    **netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/netmiko/ssh_dispatcher.py", line 315, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 346, in __init__
+    self._open()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 351, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 953, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 10.10.20.175:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 29, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py", line 170, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 95, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.10.20.175
+
+2021-02-20 12:08:45,898 - nornir.core.task -    ERROR -      start() - Host 'DIST1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 16, in load_vars
+    basic_config(task)
+  File "ntp.py", line 25, in basic_config
+    task.run(task=napalm_configure, configuration= output)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_configure (failed)
+
+
+2021-02-20 12:08:45,907 - nornir.core.task -    ERROR -      start() - Host 'DIST2': task 'napalm_configure' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 931, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python3.6/site-packages/paramiko/util.py", line 283, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 349, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 92, in _netmiko_open
+    **netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/netmiko/ssh_dispatcher.py", line 315, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/cisco/cisco_ios.py", line 17, in __init__
+    return super().__init__(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 346, in __init__
+    self._open()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 351, in _open
+    self.establish_connection()
+  File "/usr/local/lib/python3.6/site-packages/netmiko/base_connection.py", line 953, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.ssh_exception.NetmikoTimeoutException: TCP connection to device failed.
+
+Common causes of this problem are:
+1. Incorrect hostname or IP address.
+2. Wrong TCP port.
+3. Intermediate firewall blocking access.
+
+Device settings: cisco_ios 10.10.20.176:22
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 29, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_napalm/plugins/connections/__init__.py", line 57, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py", line 170, in open
+    device_type, netmiko_optional_args=self.netmiko_optional_args
+  File "/usr/local/lib/python3.6/site-packages/napalm/base/base.py", line 95, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.10.20.176
+
+2021-02-20 12:08:45,908 - nornir.core.task -    ERROR -      start() - Host 'DIST2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 16, in load_vars
+    basic_config(task)
+  File "ntp.py", line 25, in basic_config
+    task.run(task=napalm_configure, configuration= output)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: napalm_configure (failed)
+
+
+2021-02-20 12:14:35,997 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 5 hosts
+2021-02-20 12:14:36,009 - nornir.core.task -    ERROR -      start() - Host 'JPE2': task 'load_yaml' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_utils/plugins/tasks/data/load_yaml.py", line 24, in load_yaml
+    with open(file, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: './host_vars/JPE2.yaml'
+
+2021-02-20 12:14:36,010 - nornir.core.task -    ERROR -      start() - Host 'DIST1': task 'load_yaml' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_utils/plugins/tasks/data/load_yaml.py", line 24, in load_yaml
+    with open(file, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: './host_vars/DIST1.yaml'
+
+2021-02-20 12:14:36,016 - nornir.core.task -    ERROR -      start() - Host 'JPE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 14, in load_vars
+    data = task.run(task=load_yaml, file=f"./host_vars/{task.host}.yaml")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: load_yaml (failed)
+
+
+2021-02-20 12:14:36,018 - nornir.core.task -    ERROR -      start() - Host 'DIST1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 14, in load_vars
+    data = task.run(task=load_yaml, file=f"./host_vars/{task.host}.yaml")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: load_yaml (failed)
+
+
+2021-02-20 12:14:36,027 - nornir.core.task -    ERROR -      start() - Host 'DIST2': task 'load_yaml' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_utils/plugins/tasks/data/load_yaml.py", line 24, in load_yaml
+    with open(file, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: './host_vars/DIST2.yaml'
+
+2021-02-20 12:14:36,027 - nornir.core.task -    ERROR -      start() - Host 'DIST2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "ntp.py", line 14, in load_vars
+    data = task.run(task=load_yaml, file=f"./host_vars/{task.host}.yaml")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: load_yaml (failed)
+
+
+2021-02-20 12:20:46,592 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts

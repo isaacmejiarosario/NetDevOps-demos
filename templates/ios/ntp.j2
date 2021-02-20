@@ -1,0 +1,3 @@
+{% for ntp in host.facts.ntp_servers %}
+ntp server {{ ntp }}
+{% endfor %}

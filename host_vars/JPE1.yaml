@@ -1,0 +1,12 @@
+---
+ntp_servers: 
+    - "19.1.1.1"
+    - "19.1.1.2"
+ospf:
+    area: 0.0.0.0
+    rid: 172.20.100.21
+    interfaces:
+        - name: "ge-0/0/0.0"
+          passive: "False"
+        - name: "lo0.0"
+          passive: "True"   

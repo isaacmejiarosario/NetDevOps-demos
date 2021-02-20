@@ -1,0 +1,90 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <router>
+        <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+          <id>{{ host.facts.bgp.as }}</id>
+          <bgp>
+            <log-neighbor-changes>true</log-neighbor-changes>
+          </bgp>
+          <peer-group>
+            <neighbor>
+              <id>{{host.facts.bgp.peergroup}}</id>
+              <peer-group/>
+              <remote-as>65000</remote-as>
+              <update-source>
+                <Loopback>0</Loopback>
+              </update-source>
+            </neighbor>
+          </peer-group>
+          {% for n in host.facts.bgp.neighbors %}
+            <neighbor>
+              <id>{{n}}</id>
+              <peer-group>
+                <peer-group-name>{{host.facts.bgp.peergroup}}</peer-group-name>
+              </peer-group>
+            </neighbor>
+          {% endfor %}
+          <address-family>
+            <with-vrf>
+              <ipv4>
+                <af-name>unicast</af-name>
+                {% for vrf in host.facts.vrfs %}
+                <vrf>
+                  <name>{{vrf.name}}</name>
+                  <ipv4-unicast>
+                    <redistribute>
+                      <connected/>
+                      <static/>
+                    </redistribute>
+                  </ipv4-unicast>
+                </vrf>
+                {% endfor %}
+              </ipv4>
+            </with-vrf>
+            <no-vrf>
+              <ipv4>
+                <af-name>unicast</af-name>
+                <ipv4-unicast>
+                  <peer-group>
+                    <neighbor>
+                      <id>{{host.facts.bgp.peergroup}}</id>
+                      <route-reflector-client/>
+                    </neighbor>
+                  </peer-group>
+                  {% for n in host.facts.bgp.neighbors %}
+                  <neighbor>
+                    <id>{{n}}</id>
+                    <activate/>
+                  </neighbor>
+                  {% endfor %}
+                  <redistribute>
+                    <connected/>
+                    <static/>
+                  </redistribute>
+                </ipv4-unicast>
+              </ipv4>
+              <vpnv4>
+                <af-name>unicast</af-name>
+                <vpnv4-unicast>
+                  <peer-group>
+                    <neighbor>
+                      <id>{{host.facts.bgp.peergroup}}</id>
+                      <send-community>
+                        <send-community-where>both</send-community-where>
+                      </send-community>
+                    </neighbor>
+                  </peer-group>
+                   {% for n in host.facts.bgp.neighbors %}
+                  <neighbor>
+                    <id>{{n}}</id>
+                    <activate/>
+                  </neighbor>
+                  {% endfor %}
+                </vpnv4-unicast>
+              </vpnv4>
+            </no-vrf>
+          </address-family>
+        </bgp>
+      </router>
+    </native>
+</config>

@@ -1,0 +1,13 @@
+---
+cisco_group:
+    platform: 'ios'
+    username: cisco
+    password: cisco123
+junos_group:
+    platform: 'junos'
+    username: junos
+    password: junos123
+arista_group:
+    platform: 'eos'
+    username: arista
+    password: arista123

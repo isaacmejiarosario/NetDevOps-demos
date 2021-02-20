@@ -1,0 +1,21 @@
+<config>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <router operation="merge">
+      <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+        <id>{{ host.facts.ospf.id }}</id>
+        <mpls operation="replace">
+          <ldp>
+            <autoconfig/>
+          </ldp>
+        </mpls>
+        {% for net in host.facts.ospf.networks %}
+        <network>
+          <ip>{{ net }}</ip>
+          <mask>0.0.255.255</mask>
+           <area>{{host.facts.ospf.area }}</area>
+        </network>
+        {% endfor %}
+      </ospf>
+    </router>
+  </native>
+</config>

@@ -1,0 +1,22 @@
+<configuration>
+  <protocols>
+    <ospf>
+    <area>
+      <name>{{ host.facts.ospf.area }}</name>
+      {% for intf in host.facts.ospf.interfaces %}
+      {% if intf.passive != "True" %}
+      <interface operation="replace">
+        <name>{{ intf.name }}</name>
+      </interface>
+      {% else %}
+      <interface>
+        <name>{{ intf.name }}</name>
+          <passive>
+          </passive>
+      </interface>
+      {% endif %}
+      {% endfor %}
+    </area>
+    </ospf>
+  </protocols>
+</configuration>

@@ -1,0 +1,27 @@
+<config>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    {%for int in host.facts.interfaces%}
+      <interface>
+       {%if int.type == "Loopback"%} 
+        <Loopback>
+          <name>{{int.name}}</name>
+          {%if int.vrf !="default"%}
+          <vrf>
+            <forwarding>{{int.vrf}}</forwarding>
+          </vrf>
+          {%endif%}
+          <description>{{int.description}}</description>
+          <ip>
+            <address>
+              <primary>
+                <address>{{int.ip_add}}</address>
+                <mask>{{int.mask}}</mask>
+              </primary>
+            </address>
+          </ip>
+        </Loopback>
+        {%endif%}
+      </interface>
+    {%endfor%}
+    </native>
+  </config>

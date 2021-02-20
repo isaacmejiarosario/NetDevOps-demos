@@ -1,0 +1,9 @@
+---
+JPE1:
+  hostname: 172.20.0.202
+  groups:
+    - junos_group
+CPE1:
+  hostname: 172.20.100.1
+  groups:
+    - cisco_group
