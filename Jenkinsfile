@@ -3,7 +3,7 @@ pipeline {
   stages {
       stage('Deploy'){
       steps{
-        sh 'bash $WORKSPACE/Deploy/deploy-ntp.sh'
+        sh 'bash $WORKSPACE/deploy-ntp.sh'
       }
     }
 
