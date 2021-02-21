@@ -9,7 +9,7 @@ from nornir_utils.plugins.tasks.data import load_yaml
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-nr = InitNornir(config_file=config.yaml", dry_run=False)
+nr = InitNornir(config_file=config.yaml, dry_run=False)
 
 cisco_group = nr.filter(F(groups__contains="cisco_group"))
 junos_group = nr.filter(F(groups__contains="junos_group"))
