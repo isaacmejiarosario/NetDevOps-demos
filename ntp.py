@@ -1,4 +1,5 @@
 from nornir import InitNornir
+import os
 from nornir_utils.plugins.functions import print_result, print_title
 from nornir_napalm.plugins.tasks import napalm_get, napalm_configure, napalm_cli
 from nornir_scrapli.tasks import send_commands_from_file
@@ -6,7 +7,10 @@ from nornir.core.filter import F
 from nornir_jinja2.plugins.tasks import template_file
 from nornir_utils.plugins.tasks.data import load_yaml
 
-nr = InitNornir(config_file="config.yaml", dry_run=False)
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+nr = InitNornir(config_file=f"{script_dir}/config.yaml", dry_run=False)
+
 cisco_group = nr.filter(F(groups__contains="cisco_group"))
 junos_group = nr.filter(F(groups__contains="junos_group"))
 
