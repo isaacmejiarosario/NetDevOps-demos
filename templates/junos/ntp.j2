@@ -1,6 +1,6 @@
 <configuration>
     <system>
-        <ntp>
+        <ntp operation = "replace">
         {% for ntp in host.facts.ntp_servers %}
             <server>
                 <name>{{ ntp }}</name>
