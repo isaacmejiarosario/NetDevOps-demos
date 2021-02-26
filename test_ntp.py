@@ -19,7 +19,7 @@ def ntp_stats(task):
         
         
 def test_ntp():
-    r = cisco.run(task=ntp_stats)
+    r = cisco_group.run(task=ntp_stats)
     #print (r)
     for n in r:
         out = r[n].result
