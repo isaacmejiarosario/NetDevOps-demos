@@ -427,3 +427,4 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: load_yaml (failed)
 
 
 2021-02-20 12:20:46,592 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-02-20 15:57:23,388 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
