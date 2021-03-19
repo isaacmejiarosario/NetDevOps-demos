@@ -1,0 +1,30 @@
+---
+devices:
+  CPE1:
+    type: 'router'
+    os: iosxe
+    platform: iosv
+    credentials:
+      default:
+        username: cisco
+        password: cisco123
+      enable:
+        password: cisco123
+    connections:
+      cli:
+        protocol: ssh
+        ip: "172.20.100.1"
+  CPE2:
+    type: 'router'
+    os: iosxe
+    platform: iosv
+    credentials:
+      default:
+        username: cisco
+        password: cisco123
+      enable:
+        password: cisco123
+    connections:
+      cli:
+        protocol: ssh
+        ip: "172.20.100.2"
