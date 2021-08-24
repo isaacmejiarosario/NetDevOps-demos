@@ -15,6 +15,22 @@ cisco_group:
       extras:
         ssh_config_file: True
         auth_strict_key: False
+iosxr_group:
+  platform: 'iosxr'
+  username: imejia
+  password: imejia
+  connection_options:
+    scrapli:
+      platform: cisco_iosxr
+      port: 22
+      extras:
+        ssh_config_file: True
+        auth_strict_key: False
+    scrapli_netconf:
+      port: 830
+      extras:
+        ssh_config_file: True
+        auth_strict_key: False
 junos_group:
   platform: 'junos'
   username: junos

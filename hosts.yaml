@@ -3,7 +3,11 @@ JPE1:
   hostname: 172.20.0.202
   groups:
     - junos_group
-CPE1:
-  hostname: 172.20.100.1
+IOS-XR-PE1:
+  hostname: 172.20.100.13
   groups:
-    - cisco_group
+    - iosxr_group
+#IOS-XR-PE2:
+#  hostname: 172.20.100.14
+#  groups:
+#    - iosxr_group
