@@ -1,0 +1,59 @@
+---
+ntp_servers: 
+  - "19.1.1.1"
+  - "19.1.1.2"
+ospf:
+  id: 1 
+  area: 0
+  rid: 172.20.100.14
+  ldp_autoconfig: "True"
+  interfaces:
+    - Loopback0
+    - GigabitEthernet0/0/0/0
+    - GigabitEthernet0/0/0/1
+  networks:
+    - 172.16.0.0
+    - 172.20.0.0
+bgp:
+  as: 65000
+  rid: 172.20.100.14
+  peergroup: RR
+  rr: True
+  neighbors: 
+    - 172.20.100.1
+    - 172.20.100.2
+vrfs:
+  - name: A
+    description: "CLIENT VRF A"
+    rd: 10014
+    rt_import: 100
+    rt_export: 100
+  - name: B
+    description: "CLIENT VRF B"
+    rd: 10114
+    rt_import: 101
+    rt_export: 101
+  - name: C
+    description: "CLIENT VRF C"
+    rd: 10214
+    rt_import: 102
+    rt_export: 102
+interfaces:
+  - name: Loopback1
+    description: test_vrf_A
+    type: Loopback
+    vrf: A
+    ip_add: 1.1.1.14
+    mask: 255.255.255.255
+  - name: Loopback2
+    description: test_vrf_B
+    type: Loopback
+    vrf: B
+    ip_add: 1.1.1.14
+    mask: 255.255.255.255 
+  - name: GigabitEthernet0/0/0/1
+    description: test
+    type: ethernet
+    vrf: A
+    ip_add: 192.168.100.1
+    mask: 255.255.255.252 

@@ -1,0 +1,47 @@
+<config>
+     <vrfs xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">
+     {% for vrf in host.facts.vrfs %}
+      <vrf>
+        <vrf-name>{{vrf.name}}</vrf-name>
+        <create/>
+        <description>{{vrf.description}}</description>
+        <afs>
+          <af>
+            <af-name>ipv4</af-name>
+            <saf-name>unicast</saf-name>
+            <topology-name>default</topology-name>
+            <create/>
+            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-bgp-cfg">
+              <import-route-targets>
+                <route-targets>
+                  <route-target>
+                    <type>as</type>
+                    <as-or-four-byte-as>
+                      <as-xx>0</as-xx>
+                      <as>{{ host.facts.bgp.as }}</as>
+                      <as-index>{{vrf.rt_import}}</as-index>
+                      <stitching-rt>0</stitching-rt>
+                    </as-or-four-byte-as>
+                  </route-target>
+                </route-targets>
+              </import-route-targets>
+              <export-route-targets>
+                <route-targets>
+                  <route-target>
+                    <type>as</type>
+                    <as-or-four-byte-as>
+                      <as-xx>0</as-xx>
+                      <as>{{ host.facts.bgp.as }}</as>
+                      <as-index>{{vrf.rt_export}}</as-index>
+                      <stitching-rt>0</stitching-rt>
+                    </as-or-four-byte-as>
+                  </route-target>
+                </route-targets>
+              </export-route-targets>
+            </bgp>
+          </af>
+        </afs>
+      </vrf>
+      {% endfor %}
+  </vrfs>
+</config>

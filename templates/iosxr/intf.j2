@@ -1,0 +1,42 @@
+<config>
+  <interface-configurations xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg">
+  {%for int in host.facts.interfaces%}
+    {%if int.type == "Loopback"%} 
+      <interface-configuration>
+        <active>act</active>
+        <interface-name>{{int.name}}</interface-name>
+        <interface-virtual/>
+        <description>{{int.description}}</description>
+        {%if int.vrf !="default"%}
+          <vrf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">{{int.vrf}}</vrf>
+        {%endif%}
+        <ipv4-network xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg">
+          <addresses>
+            <primary>
+              <address>{{int.ip_add}}</address>
+              <netmask>{{int.mask}}</netmask>
+            </primary>
+          </addresses>
+        </ipv4-network>
+      </interface-configuration>
+    {%else%}
+      <interface-configuration>
+        <active>act</active>
+        <interface-name>{{int.name}}</interface-name>
+        <description>{{int.description}}</description>
+        {%if int.vrf !="default"%}
+          <vrf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">{{int.vrf}}</vrf>
+        {%endif%}
+        <ipv4-network xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg">
+          <addresses>
+            <primary>
+              <address>{{int.ip_add}}</address>
+              <netmask>{{int.mask}}</netmask>
+            </primary>
+          </addresses>
+        </ipv4-network>
+      </interface-configuration>
+        {%endif%}
+        {%endfor%}
+    </interface-configurations>
+</config>

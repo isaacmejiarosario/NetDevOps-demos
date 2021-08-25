@@ -1,0 +1,22 @@
+<config>
+<mpls-ldp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-mpls-ldp-cfg">
+      <enable/>
+      <global>
+        <entropy-label>
+          <enable/>
+        </entropy-label>
+      </global>
+      <default-vrf>
+      <interfaces>
+      {% for int in host.facts.ospf.interfaces %}
+        {%if int != "Loopback0" %}
+          <interface>
+            <interface-name>{{ int }}</interface-name>
+            <enable/>
+          </interface>
+        {% endif %}
+      {% endfor %}
+      </interfaces>
+      </default-vrf>
+    </mpls-ldp>
+</config>

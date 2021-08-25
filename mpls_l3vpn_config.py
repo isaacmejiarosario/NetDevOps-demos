@@ -20,10 +20,7 @@ iosxr_group = nr.filter(F(groups__contains="iosxr_group"))
 def load_vars(task):
     data = task.run(task=load_yaml, file=f"./host_vars/{task.host}.yaml")
     task.host["facts"] = data.result
-    int = task.run(task=template_file, template="intf.j2", path=f"templates/{task.host.platform}/")
-    task.run(task=netconf_edit_config, target="candidate", config=int.result)
-    task.run(task=netconf_commit)
-    #print (int)
+    mpls_config(task)
    
 def getter(task):
     result = task.run(task=netconf_get_config, source="running")
@@ -35,7 +32,7 @@ def get_config_file(task):
     date_dir = config_dir + "/" + str(date.today())
     pathlib.Path(config_dir).mkdir(exist_ok=True)
     pathlib.Path(date_dir).mkdir(exist_ok=True)
-    r = task.run(task=netconf_get_config, source="running")
+    r = task.run(task=netconf_get, filter_="/native/vrf", filter_type="xpath")
     task.run(task=write_file, content=r.result, filename=str(date_dir) + f"/{task.host}.txt")
 
 def basic_config(task):
@@ -44,5 +41,21 @@ def basic_config(task):
     task.run(task=netconf_edit_config, target="candidate", config=output)
     task.run(task=netconf_commit)
 
-output = iosxr_group.run(task=load_vars)
+def mpls_config(task):
+    vrf = task.run(task=template_file, template="vrf.j2", path=f"templates/{task.host.platform}/")
+    task.run(task=netconf_edit_config, target="candidate", config=vrf.result)
+    ospf = task.run(task=template_file, template="ospf.j2", path=f"templates/{task.host.platform}/")
+    task.run(task=netconf_edit_config, target="candidate", config=ospf.result)
+    bgp = task.run(task=template_file, template="bgp.j2", path=f"templates/{task.host.platform}/")
+    task.run(task=netconf_edit_config, target="candidate", config=bgp.result)
+    intf = task.run(task=template_file, template="intf.j2", path=f"templates/{task.host.platform}/")
+    task.run(task=netconf_edit_config, target="candidate", config=intf.result)
+    task.run(task=netconf_commit)
+
+
+
+
+
+
+output = iosxr_group.run(task=getter)
 print_result(output)
