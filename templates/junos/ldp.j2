@@ -1,0 +1,23 @@
+ <configuration>
+  <protocols>
+    <mpls operation="replace">
+    {%for int in host.facts.interfaces%}
+      {%if int.type == "ethernet" %}
+      <interface>
+        <name>{{ int.name}}.{{ int.unit}}</name>
+      </interface>
+      {% endif %}
+    {% endfor %}
+    </mpls>
+    <ldp operation="replace">
+      <track-igp-metric/>
+      {% for int in host.facts.interfaces %}
+        {%if int.type == "ethernet" %}
+          <interface>
+            <name>{{ int.name}}.{{ int.unit}}</name>
+          </interface>
+        {% endif %}
+      {% endfor %}
+    </ldp>
+  </protocols>
+</configuration>

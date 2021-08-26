@@ -1,0 +1,67 @@
+---
+ntp_servers: 
+    - "19.1.1.1"
+    - "19.1.1.3"
+    - "19.1.1.7"
+    - "19.1.1.9"
+ospf:
+    area: 0.0.0.0
+    rid: 172.20.100.21
+    interfaces:
+        - name: "ge-0/0/0.0"
+          passive: "False"
+        - name: "lo0.0"
+          passive: "True"   
+bgp:
+  as: 65000
+  rid: 172.20.100.21
+  peergroup: RR
+  rr: True
+  neighbors: 
+    - 172.20.100.1
+    - 172.20.100.2
+vrfs:
+  - name: client-a
+    description: "CLIENT VRF A"
+    rd: 65000:10021
+    rt_import: 65000:100
+    rt_export: 65000:100
+  - name: client-b
+    description: "CLIENT VRF B"
+    rd: 65000:10121
+    rt_import: 65000:101
+    rt_export: 65000:101
+  - name: client-c
+    description: "CLIENT VRF C"
+    rd: 65000:10221
+    rt_import: 65000:102
+    rt_export: 65000:102
+interfaces:
+  - name: lo0
+    unit: 1
+    description: test_vrf_A
+    type: Loopback
+    vrf: client-a
+    ip_add: 1.1.1.21
+    mask: 32
+  - name: lo0
+    unit: 2
+    description: test_vrf_B
+    type: Loopback
+    vrf: client-b
+    ip_add: 1.1.1.21
+    mask: 
+  - name: ge-0/0/0
+    unit: 0
+    description: p2p
+    type: ethernet
+    vrf: default
+    ip_add: 172.20.0.210
+    mask: 30
+  - name: ge-0/0/2
+    unit: 0
+    description: p2p
+    type: ethernet
+    vrf: default
+    ip_add: 172.20.0.242
+    mask: 30

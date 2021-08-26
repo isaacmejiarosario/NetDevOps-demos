@@ -9,9 +9,9 @@
       <default-vrf>
       <interfaces>
       {% for int in host.facts.ospf.interfaces %}
-        {%if int != "Loopback0" %}
+        {%if int != "Loopback" %}
           <interface>
-            <interface-name>{{ int }}</interface-name>
+            <interface-name>{{ int.name }}</interface-name>
             <enable/>
           </interface>
         {% endif %}

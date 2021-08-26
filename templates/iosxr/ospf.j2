@@ -16,7 +16,7 @@
                 <running/>
                 <name-scopes>
                 {% for int in host.facts.ospf.interfaces %}
-                  {%if int == "Loopback0" %}
+                  {%if int.type == "Loopback" %}
                   <name-scope>
                     <interface-name>{{ int }}</interface-name>
                     <running/>

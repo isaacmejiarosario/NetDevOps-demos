@@ -1,0 +1,35 @@
+<configuration>
+  <interfaces operation="replace">
+  {%for int in host.facts.interfaces%}
+    {%if int.type == "Loopback"%} 
+    <interface>
+      <name>{{int.name}}</name>
+        <unit>
+         <name>{{int.unit}}</name>
+         <family>
+           <inet>
+           <address>
+             <name>{{int.ip_add}}/{{int.mask}}</name>
+           </address>
+           </inet>
+         </family>
+       </unit>
+    </interface>
+    {%else%}
+    <interface>
+      <name>{{int.name}}</name>
+        <unit>
+         <name>{{int.unit}}</name>
+         <family>
+           <inet>
+           <address>
+             <name>{{int.ip_add}}/{{int.mask}}</name>
+           </address>
+           </inet>
+         </family>
+       </unit>
+    </interface>
+  {%endif%}
+  {%endfor%}
+  </interfaces>
+</configuration>

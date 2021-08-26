@@ -3,14 +3,17 @@
     <ospf>
     <area>
       <name>{{ host.facts.ospf.area }}</name>
-      {% for intf in host.facts.ospf.interfaces %}
-      {% if intf.passive != "True" %}
+      {% for int in host.facts.ospf.interfaces %}
+      {% if int.passive != "True" %}
       <interface operation="replace">
-        <name>{{ intf.name }}</name>
+        <name>{{ int.name }}</name>
+          <interface-type>p2p</interface-type>
+          <ldp-synchronization>
+          </ldp-synchronization>
       </interface>
       {% else %}
       <interface>
-        <name>{{ intf.name }}</name>
+        <name>{{ int.name }}</name>
           <passive>
           </passive>
       </interface>

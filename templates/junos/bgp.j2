@@ -1,0 +1,23 @@
+<configuration>
+<protocols>
+  <bgp operation="replace">
+    <group>
+      <name>{{ host.facts.bgp.peergroup }}</name>
+      <type>internal</type>
+      <local-address>{{ host.facts.bgp.rid }}</local-address>
+      <family>
+        <inet-vpn>
+          <any>
+          </any>
+        </inet-vpn>
+      </family>
+      <peer-as>{{ host.facts.bgp.as }}</peer-as>
+      {% for n in host.facts.bgp.neighbors %}
+      <neighbor operation="replace">
+        <name>{{n}}</name>
+      </neighbor>
+      {% endfor %}                  
+    </group>
+  </bgp>
+</protocols>
+</configuration>

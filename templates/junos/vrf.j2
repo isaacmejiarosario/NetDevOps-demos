@@ -1,0 +1,25 @@
+ <configuration>
+  <routing-instances>
+    {% for vrf in host.facts.vrfs %}
+      <instance>
+        <name>{{vrf.name}}</name>
+        <instance-type>vrf</instance-type>
+         {% for int in host.facts.interfaces %} 
+           {% if vrf.name == int.vrf %}
+             <interface>
+              <name>{{int.name}}.{{int.unit}}</name>
+             </interface>
+           {% endif %}
+         {% endfor %}
+         <route-distinguisher>
+            <rd-type>{{vrf.rd}}</rd-type>
+          </route-distinguisher>
+          <vrf-target>
+            <community>target:{{vrf.rt_import}}</community>
+          </vrf-target>
+          <vrf-table-label>
+          </vrf-table-label>
+      </instance>
+    {% endfor %}
+ </routing-instances>
+</configuration>
