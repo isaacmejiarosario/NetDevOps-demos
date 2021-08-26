@@ -35,6 +35,18 @@ junos_group:
   platform: 'junos'
   username: junos
   password: junos123
+  connection_options:
+    scrapli:
+      platform: junos
+      port: 22
+      extras:
+        ssh_config_file: True
+        auth_strict_key: False
+    scrapli_netconf:
+      port: 22
+      extras:
+        ssh_config_file: True
+        auth_strict_key: False
 arista_group:
   platform: 'eos'
   username: arista

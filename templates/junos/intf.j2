@@ -26,6 +26,10 @@
              <name>{{int.ip_add}}/{{int.mask}}</name>
            </address>
            </inet>
+          {%if int.mpls == "True"%}
+             <mpls>
+            </mpls>
+          {%endif%}
          </family>
        </unit>
     </interface>

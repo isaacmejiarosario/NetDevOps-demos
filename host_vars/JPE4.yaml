@@ -6,7 +6,7 @@ ntp_servers:
     - "19.1.1.9"
 ospf:
     area: 0.0.0.0
-    rid: 172.20.100.21
+    rid: 172.20.100.22
     interfaces:
         - name: "ge-0/0/0.0"
           passive: "False"
@@ -14,7 +14,7 @@ ospf:
           passive: "True"   
 bgp:
   as: 65000
-  rid: 172.20.100.21
+  rid: 172.20.100.22
   peergroup: RR
   rr: True
   neighbors: 
@@ -23,17 +23,17 @@ bgp:
 vrfs:
   - name: client-a
     description: "CLIENT VRF A"
-    rd: 65000:10021
+    rd: 65000:10022
     rt_import: 65000:100
     rt_export: 65000:100
   - name: client-b
     description: "CLIENT VRF B"
-    rd: 65000:10121
+    rd: 65000:10122
     rt_import: 65000:101
     rt_export: 65000:101
   - name: client-c
     description: "CLIENT VRF C"
-    rd: 65000:10221
+    rd: 65000:10222
     rt_import: 65000:102
     rt_export: 65000:102
 interfaces:
@@ -41,22 +41,22 @@ interfaces:
     unit: 0
     description: test_vrf_A
     type: Loopback
-    vrf: defaults
-    ip_add: 172.20.100.21
+    vrf: default
+    ip_add: 172.20.100.22
     mask: 32
   - name: lo0
     unit: 1
     description: test_vrf_A
     type: Loopback
     vrf: client-a
-    ip_add: 1.1.1.21
+    ip_add: 1.1.1.22
     mask: 32
   - name: lo0
     unit: 2
     description: test_vrf_B
     type: Loopback
     vrf: client-b
-    ip_add: 1.1.1.21
+    ip_add: 1.1.1.22
     mask: 32
   - name: ge-0/0/0
     unit: 0
@@ -64,7 +64,7 @@ interfaces:
     type: ethernet
     mpls: "True"
     vrf: default
-    ip_add: 172.20.0.210
+    ip_add: 172.20.0.102
     mask: 30
   - name: ge-0/0/2
     unit: 0
@@ -72,6 +72,5 @@ interfaces:
     type: ethernet
     mpls: "True"
     vrf: default
-    ip_add: 172.20.0.242
+    ip_add: 172.20.0.254
     mask: 30
-    

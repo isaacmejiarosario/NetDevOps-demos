@@ -23,17 +23,17 @@ bgp:
     - 172.20.100.1
     - 172.20.100.2
 vrfs:
-  - name: A
+  - name: client-a
     description: "CLIENT VRF A"
     rd: 10013
     rt_import: 100
     rt_export: 100
-  - name: B
+  - name: client-b
     description: "CLIENT VRF B"
     rd: 10113
     rt_import: 101
     rt_export: 101
-  - name: C
+  - name: client-c
     description: "CLIENT VRF C"
     rd: 10213
     rt_import: 102
@@ -42,18 +42,18 @@ interfaces:
   - name: Loopback1
     description: test_vrf_A
     type: Loopback
-    vrf: A
+    vrf: client-a
     ip_add: 1.1.1.13
     mask: 255.255.255.255
   - name: Loopback2
     description: test_vrf_B
     type: Loopback
-    vrf: B
+    vrf: client-b
     ip_add: 1.1.1.13
     mask: 255.255.255.255 
   - name: GigabitEthernet0/0/0/1
     description: test
     type: ethernet
-    vrf: A
+    vrf: client-a
     ip_add: 192.168.100.1
     mask: 255.255.255.252 

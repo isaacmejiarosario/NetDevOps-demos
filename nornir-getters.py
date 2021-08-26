@@ -21,15 +21,14 @@ iosxr_group = nr.filter(F(groups__contains="iosxr_group"))
 def load_vars(task):
     data = task.run(task=load_yaml, file=f"./host_vars/{task.host}.yaml")
     task.host["facts"] = data.result
-    ldp = task.run(task=template_file, template="ldp.j2", path=f"templates/{task.host.platform}/")
-    #task.run(task=netconf_edit_config, target="candidate", config=int.result)
-    #task.run(task=netconf_commit)
-    response = task.run(task=pyez_config, payload= ldp.result, data_format='xml')
+    data = task.run(task=template_file, template="intf.j2", path=f"templates/{task.host.platform}/")
+#    task.run(task=netconf_edit_config, target="candidate", config=int.result)
+#    task.run(task=netconf_commit)
+    response = task.run(task=pyez_config, payload= data.result, data_format='xml')
     if response:
         diff = task.run(pyez_diff)
     if diff:
         task.run(task=pyez_commit)
-
 
 
 def getter(task):
