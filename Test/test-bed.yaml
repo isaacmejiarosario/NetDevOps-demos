@@ -1,30 +1,30 @@
 ---
 devices:
-  CPE1:
+  IOS-XR-PE1:
     type: 'router'
-    os: iosxe
-    platform: iosv
+    os: iosxr
+    platform: asr9k
     credentials:
       default:
-        username: cisco
-        password: cisco123
+        username: imejia
+        password: imejia
       enable:
-        password: cisco123
+        password: imejia
     connections:
       cli:
         protocol: ssh
-        ip: "172.20.100.1"
-  CPE2:
+        ip: "172.20.100.13"
+  IOS-XR-PE2:
     type: 'router'
-    os: iosxe
-    platform: iosv
+    os: iosxr
+    platform: asr9k
     credentials:
       default:
-        username: cisco
-        password: cisco123
+        username: imejia
+        password: imejia
       enable:
-        password: cisco123
+        password: imejia
     connections:
       cli:
         protocol: ssh
-        ip: "172.20.100.2"
+        ip: "172.20.100.14"

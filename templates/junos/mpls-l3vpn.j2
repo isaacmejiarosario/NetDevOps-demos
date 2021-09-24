@@ -1,0 +1,123 @@
+<configuration>
+<protocols>
+  <bgp operation="replace">
+    <group>
+      <name>{{ host.facts.bgp.peergroup }}</name>
+      <type>internal</type>
+      <local-address>{{ host.facts.bgp.rid }}</local-address>
+      <family>
+        <inet-vpn>
+          <any>
+          </any>
+        </inet-vpn>
+      </family>
+      <peer-as>{{ host.facts.bgp.as }}</peer-as>
+      {% for n in host.facts.bgp.neighbors %}
+      <neighbor operation="replace">
+        <name>{{n}}</name>
+      </neighbor>
+      {% endfor %}                  
+    </group>
+  </bgp>
+<ospf>
+    <area>
+      <name>{{ host.facts.ospf.area }}</name>
+      {% for int in host.facts.ospf.interfaces %}
+      {% if int.passive != "True" %}
+      <interface operation="replace">
+        <name>{{ int.name }}</name>
+          <interface-type>p2p</interface-type>
+          <ldp-synchronization>
+          </ldp-synchronization>
+      </interface>
+      {% else %}
+      <interface>
+        <name>{{ int.name }}</name>
+          <passive>
+          </passive>
+      </interface>
+      {% endif %}
+      {% endfor %}
+    </area>
+    </ospf>
+    <mpls operation="replace">
+    {%for int in host.facts.interfaces%}
+      {%if int.type == "ethernet" %}
+      <interface>
+        <name>{{ int.name}}.{{ int.unit}}</name>
+      </interface>
+      {% endif %}
+    {% endfor %}
+    </mpls>
+    <ldp operation="replace">
+      <track-igp-metric/>
+      {% for int in host.facts.interfaces %}
+        {%if int.type == "ethernet" %}
+          <interface>
+            <name>{{ int.name}}.{{ int.unit}}</name>
+          </interface>
+        {% endif %}
+      {% endfor %}
+    </ldp>
+</protocols>
+ <routing-instances>
+    {% for vrf in host.facts.vrfs %}
+      <instance>
+        <name>{{vrf.name}}</name>
+        <instance-type>vrf</instance-type>
+         {% for int in host.facts.interfaces %} 
+           {% if vrf.name == int.vrf %}
+             <interface>
+              <name>{{int.name}}.{{int.unit}}</name>
+             </interface>
+           {% endif %}
+         {% endfor %}
+         <route-distinguisher>
+            <rd-type>{{vrf.rd}}</rd-type>
+          </route-distinguisher>
+          <vrf-target>
+            <community>target:{{vrf.rt_import}}</community>
+          </vrf-target>
+          <vrf-table-label>
+          </vrf-table-label>
+      </instance>
+    {% endfor %}
+ </routing-instances>
+  <interfaces operation="replace">
+  {%for int in host.facts.interfaces%}
+    {%if int.type == "Loopback"%} 
+    <interface>
+      <name>{{int.name}}</name>
+        <unit>
+         <name>{{int.unit}}</name>
+         <family>
+           <inet>
+           <address>
+             <name>{{int.ip_add}}/{{int.mask}}</name>
+           </address>
+           </inet>
+         </family>
+       </unit>
+    </interface>
+    {%else%}
+    <interface>
+      <name>{{int.name}}</name>
+        <unit>
+         <name>{{int.unit}}</name>
+         <family>
+           <inet>
+           <address>
+             <name>{{int.ip_add}}/{{int.mask}}</name>
+           </address>
+           </inet>
+          {%if int.mpls == "True"%}
+             <mpls>
+            </mpls>
+          {%endif%}
+         </family>
+       </unit>
+    </interface>
+  {%endif%}
+  {%endfor%}
+  </interfaces>
+</configuration>
