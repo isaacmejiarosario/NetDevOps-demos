@@ -15,7 +15,7 @@ class OspfTestcase(aetest.Testcase):
             if os == "iosxr":
                 ospf_status = device.parse('show ospf vrf all-inclusive neighbor detail')
                 ospf_vrfs = ospf_status.q.get_values('vrf')
-                with open(f"./golden_ops/{device.name}_show-ospf-vrf-all-inclusive-neighbor-detail_parsed.txt", "rb") as file:
+                with open(f"./golden_ops/Test/{device.name}_show-ospf-vrf-all-inclusive-neighbor-detail_parsed.txt", "rb") as file:
                     golden_template = json.load(file)
                     for vrf in ospf_vrfs:
                         current_vrf = ospf_status["vrf"][vrf]
@@ -42,7 +42,7 @@ class OspfTestcase(aetest.Testcase):
             elif os == "junos":
                 ospf_status = device.parse('show ospf neighbor instance all')
                 ospf_sessions = ospf_status.q.get_values('ospf-neighbor')
-                with open(f"./golden_ops/{device.name}_show-ospf-neighbor-instance-all_parsed.txt", "rb") as file:
+                with open(f"./golden_ops/Test/{device.name}_show-ospf-neighbor-instance-all_parsed.txt", "rb") as file:
                     golden_template = json.load(file)
                     golden_sessions =  Dq(golden_template).get_values("ospf-neighbor")
                     for session in golden_sessions:

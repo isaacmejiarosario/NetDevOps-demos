@@ -16,7 +16,7 @@ class ldpTestcase(aetest.Testcase):
                 ldp_template = device.parse('show mpls ldp  neighbor')
                 ldp_status = ldp_template['vrf']['default']
                 ldp_peers = Dq(ldp_template).get_values("peers")
-                with open(f"golden_ops/{device.name}_show-mpls-ldp-neighbor_parsed.txt", "rb") as f:
+                with open(f"golden_ops/Test/{device.name}_show-mpls-ldp-neighbor_parsed.txt", "rb") as f:
                     golden_template = json.load(f)
                     ldp_golden_status = golden_template['vrf']['default']
                     golden_peers = Dq(golden_template).get_values("peers")
@@ -35,7 +35,7 @@ class ldpTestcase(aetest.Testcase):
                 ldp_template = device.parse('show ldp session')
                 ldp_status = ldp_template['ldp-session-information']['ldp-session'][0]
                 ldp_peers = Dq(ldp_status).get_values('ldp-neighbor-address')
-                with open(f"golden_ops/{device.name}_show-ldp-session_parsed.txt", "rb") as f:
+                with open(f"golden_ops/Test/{device.name}_show-ldp-session_parsed.txt", "rb") as f:
                     golden_template = json.load(f)
                     ldp_golden_status = golden_template['ldp-session-information']['ldp-session']
                     golden_peers = Dq(golden_template).get_values('ldp-neighbor-address')
