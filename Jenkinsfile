@@ -18,11 +18,5 @@ pipeline {
         sh 'bash $WORKSPACE/mpls_l3vpn_easypy_test.py'
       }
     }
-    stage('Test Prod'){
-      steps{
-        sh 'bash $WORKSPACE/Test/mpls_l3vpn_easypy_test.py'
-      }
-    }
-
   }
 }
