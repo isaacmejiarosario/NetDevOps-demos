@@ -16,7 +16,7 @@ class BgpTestcase(aetest.Testcase):
             if os == "iosxr":
                 bgp_status = device.parse('show bgp ipv4 unicast neighbors')
                 bgp_vrfs = bgp_status.q.get_values('vrf')
-                with open(f"./golden_ops/Test/{device.name}_show-bgp-ipv4-unicast-neighbors_parsed.txt", "rb") as file:
+                with open(f"./Test/golden_ops/{device.name}_show-bgp-ipv4-unicast-neighbors_parsed.txt", "rb") as file:
                     golden_template = json.load(file)
                     for vrf in bgp_vrfs:
                         current_vrf = bgp_status['instance']['all']['vrf'][vrf]
@@ -38,7 +38,7 @@ class BgpTestcase(aetest.Testcase):
             if os == "iosxr":
                 bgp_status = device.parse('show bgp ipv4 unicast neighbors')
                 bgp_vrfs = bgp_status.q.get_values('vrf')
-                with open(f"./golden_ops/Test/{device.name}_show-bgp-ipv4-unicast-neighbors_parsed.txt", "rb") as file:
+                with open(f"./Test/golden_ops/{device.name}_show-bgp-ipv4-unicast-neighbors_parsed.txt", "rb") as file:
                     golden_template = json.load(file)
                     for vrf in bgp_vrfs:
                         current_vrf = bgp_status['instance']['all']['vrf'][vrf]
