@@ -15,7 +15,7 @@ pipeline {
 
       stage('Deploy Prod'){
       steps{
-        sh 'bash $WORKSPACE/mpls_l3vpn_easypy_test.py'
+        sh 'bash $WORKSPACE/mpls_l3vpn_config.py'
       }
     }
   }
