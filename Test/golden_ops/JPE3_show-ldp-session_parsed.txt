@@ -1,0 +1,14 @@
+{
+  "_exclude": [],
+  "ldp-session-information": {
+    "ldp-session": [
+      {
+        "ldp-connection-state": "Open",
+        "ldp-neighbor-address": "172.20.100.1",
+        "ldp-remaining-time": "20",
+        "ldp-session-adv-mode": "DU",
+        "ldp-session-state": "Operational"
+      }
+    ]
+  }
+}

@@ -1913,3 +1913,1125 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
 
 
 2021-08-26 15:58:14,069 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 16:33:58,699 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 16:34:00,851 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/usr/local/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "templates/iosxr/ospf.j2", line 19, in top-level template code
+    {%if int.type == "Loopback" %}
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'type'
+
+2021-08-26 16:34:00,852 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 18, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 24, in mpls_config
+    ospf = task.run(task=template_file, template="ospf.j2", path=f"templates/{task.host.platform}/")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2021-08-26 16:34:00,962 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/usr/local/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "templates/iosxr/ospf.j2", line 19, in top-level template code
+    {%if int.type == "Loopback" %}
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'type'
+
+2021-08-26 16:34:00,962 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 18, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 24, in mpls_config
+    ospf = task.run(task=template_file, template="ospf.j2", path=f"templates/{task.host.platform}/")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2021-08-26 16:38:53,518 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 16:39:57,634 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 16:40:07,828 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'netconf_edit_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/ptyprocess.py", line 395, in read
+    s = self.fileobj.read1(size)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/transport/systemssh.py", line 103, in _authenticate
+    new_output = self.session.read()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/ptyprocess.py", line 400, in read
+    raise EOFError("End Of File (EOF). Exception style platform.")
+EOFError: End Of File (EOF). Exception style platform.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_scrapli/tasks/netconf_edit_config.py", line 38, in netconf_edit_config
+    scrapli_conn = task.host.get_connection("scrapli_netconf", task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_scrapli/connection.py", line 166, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/driver/driver.py", line 64, in open
+    login_bytes = self.transport.open_netconf()
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/transport/systemssh.py", line 38, in open_netconf
+    login_bytes = self._open_netconf_pty()
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/transport/systemssh.py", line 58, in _open_netconf_pty
+    login_bytes: bytes = self._authenticate()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 286, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/lib64/python3.6/multiprocessing/pool.py", line 644, in get
+    raise self._value
+  File "/usr/lib64/python3.6/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/transport/systemssh.py", line 107, in _authenticate
+    self._ssh_message_handler(output=output)
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/systemssh.py", line 286, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host 172.20.100.14
+
+2021-08-26 16:40:07,828 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 18, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 23, in mpls_config
+    task.run(task=netconf_edit_config, target="candidate", config=vrf.result)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netconf_edit_config (failed)
+
+
+2021-08-26 16:46:12,163 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 16:50:22,652 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 16:50:23,436 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is already open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 603, in lock
+    self.rpc.lock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is already open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_config.py", line 22, in pyez_config
+    config.lock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 606, in lock
+    raise LockError(rsp=err.rsp)
+jnpr.junos.exception.LockError: LockError(severity: error, bad_element: None, message: Configuration database is already open)
+
+2021-08-26 16:50:23,436 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 18, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 35, in mpls_config
+    task.run(task=pyez_config, payload= ospf.result, data_format='xml')
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_config (failed)
+
+
+2021-08-26 16:50:23,437 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'pyez_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is already open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 603, in lock
+    self.rpc.lock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is already open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_config.py", line 22, in pyez_config
+    config.lock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 606, in lock
+    raise LockError(rsp=err.rsp)
+jnpr.junos.exception.LockError: LockError(severity: error, bad_element: None, message: Configuration database is already open)
+
+2021-08-26 16:50:23,438 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 18, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 35, in mpls_config
+    task.run(task=pyez_config, payload= ospf.result, data_format='xml')
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_config (failed)
+
+
+2021-08-26 17:34:36,537 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 17:34:37,386 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'pyez_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is already open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 603, in lock
+    self.rpc.lock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is already open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_config.py", line 22, in pyez_config
+    config.lock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 606, in lock
+    raise LockError(rsp=err.rsp)
+jnpr.junos.exception.LockError: LockError(severity: error, bad_element: None, message: Configuration database is already open)
+
+2021-08-26 17:34:37,387 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 34, in mpls_config
+    task.run(task=pyez_config, payload= ospf.result, data_format='xml')
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_config (failed)
+
+
+2021-08-26 17:34:37,410 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is already open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 603, in lock
+    self.rpc.lock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is already open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_config.py", line 22, in pyez_config
+    config.lock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 606, in lock
+    raise LockError(rsp=err.rsp)
+jnpr.junos.exception.LockError: LockError(severity: error, bad_element: None, message: Configuration database is already open)
+
+2021-08-26 17:34:37,411 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 34, in mpls_config
+    task.run(task=pyez_config, payload= ospf.result, data_format='xml')
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_config (failed)
+
+
+2021-08-26 17:48:17,235 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 17:48:31,225 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 17:48:31,226 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 41, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 17:48:31,610 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 17:48:31,611 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 41, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 17:53:34,338 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 17:53:47,894 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 17:53:47,895 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 40, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 17:53:48,219 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 17:53:48,219 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 40, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 17:55:04,683 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 17:55:09,307 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 17:55:09,307 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 34, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 17:55:09,388 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 17:55:09,388 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 34, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 18:15:04,479 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:15:09,135 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 18:15:09,135 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 34, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 18:15:09,204 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'pyez_commit' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 837, in execute
+    filter_xml=kvargs.get("filter_xml"),
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 165, in wrapper
+    raise ex
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 117, in wrapper
+    rsp = function(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1440, in _rpc_reply
+    return self._conn.rpc(rpc_cmd_e, filter_xml)._NCElement__doc
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 231, in execute
+    huge_tree=self._huge_tree).request(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/third_party/juniper/rpc.py", line 52, in request
+    return self._request(rpc)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/operations/rpc.py", line 360, in _request
+    raise self._reply.error
+ncclient.operations.rpc.RPCError: 
+Configuration database is not open
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 630, in unlock
+    self.rpc.unlock_configuration()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/rpcmeta.py", line 364, in _exec_rpc
+    return self._junos.execute(rpc, **dec_args)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 76, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/decorators.py", line 31, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 854, in execute
+    raise EzErrors.RpcError(cmd=rpc_cmd_e, rsp=rsp, errs=ex)
+jnpr.junos.exception.RpcError: RpcError(severity: error, bad_element: None, message: Configuration database is not open)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_commit.py", line 18, in pyez_commit
+    config.unlock()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/utils/config.py", line 633, in unlock
+    raise UnlockError(rsp=err.rsp)
+jnpr.junos.exception.UnlockError: UnlockError(severity: error, bad_element: None, message: Configuration database is not open)
+
+2021-08-26 18:15:09,204 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 34, in mpls_config
+    task.run(task=pyez_commit)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_commit (failed)
+
+
+2021-08-26 18:29:14,319 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:31:08,424 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:32:07,961 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:34:03,732 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:43:55,723 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:43:55,752 - nornir.core.task -    ERROR -      start() - Host 'JPE4': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 25, in load_vars
+    task.run(task=netconf_edit_config, target="candidate", config=int.result)
+AttributeError: type object 'int' has no attribute 'result'
+
+2021-08-26 18:43:55,762 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 25, in load_vars
+    task.run(task=netconf_edit_config, target="candidate", config=int.result)
+AttributeError: type object 'int' has no attribute 'result'
+
+2021-08-26 18:45:01,776 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:45:01,817 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/usr/local/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "templates/iosxr/mpls-l3vpn.j2", line 148, in top-level template code
+    <interface-name>{{ int.name }}</interface-name>
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'name'
+
+2021-08-26 18:45:01,817 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.6/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/usr/local/lib/python3.6/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "templates/iosxr/mpls-l3vpn.j2", line 148, in top-level template code
+    <interface-name>{{ int.name }}</interface-name>
+jinja2.exceptions.UndefinedError: 'str object' has no attribute 'name'
+
+2021-08-26 18:45:01,817 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 24, in load_vars
+    mpls = task.run(task=template_file, template="mpls-l3vpn.j2", path=f"templates/{task.host.platform}/")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2021-08-26 18:45:01,818 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 24, in load_vars
+    mpls = task.run(task=template_file, template="mpls-l3vpn.j2", path=f"templates/{task.host.platform}/")
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2021-08-26 18:46:44,435 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:47:16,506 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'netconf_edit_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 286, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/lib64/python3.6/multiprocessing/pool.py", line 640, in get
+    raise TimeoutError
+multiprocessing.context.TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_scrapli/tasks/netconf_edit_config.py", line 43, in netconf_edit_config
+    scrapli_response = scrapli_conn.edit_config(config=config, target=target)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/driver/driver.py", line 144, in edit_config
+    raw_response = self.channel.send_input_netconf(response.channel_input)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/channel/channel.py", line 206, in send_input_netconf
+    channel_input=final_channel_input, strip_prompt=False, eager=True
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 288, in multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 191, in _handle_timeout
+    self.close()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/systemssh.py", line 458, in close
+    self.session.close()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/ptyprocess.py", line 355, in close
+    del self.fileobj
+AttributeError: fileobj
+
+2021-08-26 18:47:16,508 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 25, in load_vars
+    task.run(task=netconf_edit_config, target="candidate", config=mpls.result)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netconf_edit_config (failed)
+
+
+2021-08-26 18:47:16,699 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'netconf_edit_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 286, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/lib64/python3.6/multiprocessing/pool.py", line 640, in get
+    raise TimeoutError
+multiprocessing.context.TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_scrapli/tasks/netconf_edit_config.py", line 43, in netconf_edit_config
+    scrapli_response = scrapli_conn.edit_config(config=config, target=target)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/driver/driver.py", line 144, in edit_config
+    raw_response = self.channel.send_input_netconf(response.channel_input)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/channel/channel.py", line 206, in send_input_netconf
+    channel_input=final_channel_input, strip_prompt=False, eager=True
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 288, in multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 192, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: Timed out sending input to device.
+
+2021-08-26 18:47:16,699 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 25, in load_vars
+    task.run(task=netconf_edit_config, target="candidate", config=mpls.result)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netconf_edit_config (failed)
+
+
+2021-08-26 18:47:51,219 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-08-26 18:48:23,173 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'netconf_edit_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 286, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/lib64/python3.6/multiprocessing/pool.py", line 640, in get
+    raise TimeoutError
+multiprocessing.context.TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_scrapli/tasks/netconf_edit_config.py", line 43, in netconf_edit_config
+    scrapli_response = scrapli_conn.edit_config(config=config, target=target)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/driver/driver.py", line 144, in edit_config
+    raw_response = self.channel.send_input_netconf(response.channel_input)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/channel/channel.py", line 206, in send_input_netconf
+    channel_input=final_channel_input, strip_prompt=False, eager=True
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 288, in multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 191, in _handle_timeout
+    self.close()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/systemssh.py", line 458, in close
+    self.session.close()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/transport/ptyprocess.py", line 355, in close
+    del self.fileobj
+AttributeError: fileobj
+
+2021-08-26 18:48:23,175 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE2': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 25, in load_vars
+    task.run(task=netconf_edit_config, target="candidate", config=mpls.result)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netconf_edit_config (failed)
+
+
+2021-08-26 18:48:23,350 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'netconf_edit_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 286, in multiprocessing_timeout
+    result = future.get(timeout=self.timeout_duration)
+  File "/usr/lib64/python3.6/multiprocessing/pool.py", line 640, in get
+    raise TimeoutError
+multiprocessing.context.TimeoutError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_scrapli/tasks/netconf_edit_config.py", line 43, in netconf_edit_config
+    scrapli_response = scrapli_conn.edit_config(config=config, target=target)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/driver/driver.py", line 144, in edit_config
+    raw_response = self.channel.send_input_netconf(response.channel_input)
+  File "/usr/local/lib/python3.6/site-packages/scrapli_netconf/channel/channel.py", line 206, in send_input_netconf
+    channel_input=final_channel_input, strip_prompt=False, eager=True
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 114, in decorate
+    wrapped_func=wrapped_func, args=args, kwargs=kwargs
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 288, in multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.6/site-packages/scrapli/decorators.py", line 192, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: Timed out sending input to device.
+
+2021-08-26 18:48:23,351 - nornir.core.task -    ERROR -      start() - Host 'IOS-XR-PE1': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "nornir-getters.py", line 25, in load_vars
+    task.run(task=netconf_edit_config, target="candidate", config=mpls.result)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: netconf_edit_config (failed)
+
+
+2021-08-26 18:57:45,314 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-09-29 05:18:48,086 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-09-29 05:21:03,698 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 2 hosts
+2021-09-29 05:23:11,005 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'pyez_config' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1360, in open
+    "use_filter": self._use_filter,
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 168, in connect
+    return connect_ssh(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/manager.py", line 135, in connect_ssh
+    session.connect(*args, **kwds)
+  File "/usr/local/lib/python3.6/site-packages/ncclient/transport/ssh.py", line 291, in connect
+    raise SSHError("Could not open socket to %s:%s" % (host, port))
+ncclient.transport.errors.SSHError: Could not open socket to 172.20.100.21:830
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/tasks/pyez_config.py", line 19, in pyez_config
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 448, in get_connection
+    extras=conn.extras,
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/inventory.py", line 499, in open_connection
+    configuration=configuration,
+  File "/usr/local/lib/python3.6/site-packages/nornir_pyez/plugins/connections/__init__.py", line 36, in open
+    connection.open()
+  File "/usr/local/lib/python3.6/site-packages/jnpr/junos/device.py", line 1385, in open
+    raise EzErrors.ConnectTimeoutError(self)
+jnpr.junos.exception.ConnectTimeoutError: ConnectTimeoutError(172.20.100.21)
+
+2021-09-29 05:23:11,007 - nornir.core.task -    ERROR -      start() - Host 'JPE3': task 'load_vars' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "mpls_l3vpn_config.py", line 17, in load_vars
+    mpls_config(task)
+  File "mpls_l3vpn_config.py", line 32, in mpls_config
+    task.run(task=pyez_config, payload= mpls.result, data_format='xml')
+  File "/usr/local/lib/python3.6/site-packages/nornir/core/task.py", line 168, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: pyez_config (failed)
+
+
+2021-09-29 05:34:14,823 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 4 hosts
+2021-09-29 05:35:57,391 -  nornir.core -     INFO -        run() - Running task 'load_vars' with args {} on 4 hosts

@@ -28,3 +28,31 @@ devices:
       cli:
         protocol: ssh
         ip: "172.20.100.14"
+  JPE3:
+    type: 'router'
+    os: junos
+    platform: vmx
+    credentials:
+      default:
+        username: junos
+        password: junos123
+      enable:
+        password: junos123
+    connections:
+      cli:
+        protocol: ssh
+        ip: "172.20.100.21"
+  JPE4:
+    type: 'router'
+    os: junos
+    platform: vmx
+    credentials:
+      default:
+        username: junos
+        password: junos123
+      enable:
+        password: junos123
+    connections:
+      cli:
+        protocol: ssh
+        ip: "172.20.100.22"  

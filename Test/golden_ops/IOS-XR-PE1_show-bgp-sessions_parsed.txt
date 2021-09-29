@@ -1,0 +1,29 @@
+{
+  "_exclude": [],
+  "instance": {
+    "default": {
+      "vrf": {
+        "default": {
+          "neighbors": {
+            "172.20.100.1": {
+              "as_number": 65000,
+              "in_q": 0,
+              "nbr_state": "Established",
+              "nsr_state": "None",
+              "out_q": 0,
+              "spk": 0
+            },
+            "172.20.100.2": {
+              "as_number": 65000,
+              "in_q": 0,
+              "nbr_state": "Idle",
+              "nsr_state": "None",
+              "out_q": 0,
+              "spk": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}

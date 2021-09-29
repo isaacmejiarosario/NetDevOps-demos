@@ -1,21 +1,26 @@
 pipeline {
   agent any
   stages {
-      stage('Build') {
+      stage('Build Config Dev') {
       steps {
-          sh 'bash $WORKSPACE/Build/basic.sh'
+          sh 'bash $WORKSPACE/build-config.sh'
       }
     }
 
-      stage('Test') {
+      stage('Test Dev') {
       steps {
-          sh 'bash $WORKSPACE/Test/test-ntp.sh'
+          sh 'bash $WORKSPACE/Test/mpls_l3vpn_easypy_test.py'
       }
     }
 
-      stage('Deploy'){
+      stage('Deploy Prod'){
       steps{
-        sh 'bash $WORKSPACE/Deploy/deploy-ntp.sh'
+        sh 'bash $WORKSPACE/mpls_l3vpn_easypy_test.py'
+      }
+    }
+    stage('Test Prod'){
+      steps{
+        sh 'bash $WORKSPACE/Test/mpls_l3vpn_easypy_test.py'
       }
     }
 

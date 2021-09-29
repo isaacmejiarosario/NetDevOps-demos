@@ -7,19 +7,26 @@ class PingTestcase(aetest.Testcase):
     @aetest.setup
     def setup(self):
         self.parameters["testbed"].connect(log_stdout=False)
-        self.device_list = ["172.20.100.1","172.20.100.2","172.20.100.21"]
+        self.ipv4_list_grt  = ["172.20.100.1","172.20.100.13","172.20.100.14","172.20.100.21","172.20.100.22"]
 
-        
     @aetest.test
     def ping_test(self):
-        try:
-            for device in self.parameters["testbed"].devices.values():
-                for dest in self.device_list:
-                    ping_result = device.parse(f"ping {dest} source loopback 0 repeat 3").q.contains("success_rate_percent").get_values("success_rate_percent")[0]
-                    assert ping_result == 100.0
-        except Exception as e:
-            self.failed(f"{device.name} failed to reach loopback")
-
+        for device in self.parameters["testbed"].devices.values():
+            os = device.os
+            if os == "iosxr":
+                for dest in self.ipv4_list_grt:
+                    ping_result = device.parse(f"ping {dest} source loopback0 repeat 4").q.get_values("success_rate_percent")[0]
+                    try:
+                        assert ping_result >= 75.0
+                    except Exception as e:
+                        self.failed(f"{device.name} failed to reach loopback with ipv4 address {dest}")
+            elif os == "junos":
+                for dest in self.ipv4_list_grt:
+                    ping_result = device.parse(f"ping {dest} count 4 ").q.get_values('received')[0]
+                    try:
+                        assert ping_result >= 3
+                    except Exception as e:
+                        self.failed(f"{device.name} failed to reach loopback with ipv4 address {dest}")
 
 class CommonCleanup(aetest.CommonCleanup):
     def disconnect_from_devices(self):

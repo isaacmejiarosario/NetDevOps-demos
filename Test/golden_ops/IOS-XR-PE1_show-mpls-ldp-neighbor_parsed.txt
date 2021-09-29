@@ -1,0 +1,45 @@
+{
+  "_exclude": [],
+  "vrf": {
+    "default": {
+      "peers": {
+        "172.20.100.1": {
+          "label_space_id": {
+            "0": {
+              "address_family": {
+                "ipv4": {
+                  "address_bound": [
+                    "9.9.9.9",
+                    "10.0.0.200",
+                    "172.20.0.2",
+                    "172.20.0.6",
+                    "172.20.0.9",
+                    "172.20.0.17",
+                    "172.20.0.101",
+                    "172.20.0.201",
+                    "172.20.0.205",
+                    "172.20.0.209",
+                    "172.20.100.1"
+                  ],
+                  "ldp_discovery_sources": {
+                    "interface": {
+                      "GigabitEthernet0/0/0/0": {}
+                    }
+                  }
+                }
+              },
+              "graceful_restart": "No",
+              "msg_rcvd": 694,
+              "msg_sent": 701,
+              "neighbor": "Downstream-Unsolicited",
+              "session_holdtime": 180,
+              "state": "Oper",
+              "tcp_connection": "172.20.100.1:646 - 172.20.100.13:34639",
+              "uptime": "09:55:48"
+            }
+          }
+        }
+      }
+    }
+  }
+}

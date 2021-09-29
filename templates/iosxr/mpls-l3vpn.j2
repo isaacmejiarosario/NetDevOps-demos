@@ -1,0 +1,241 @@
+<config>
+<bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-bgp-cfg">
+      <instance>
+        <instance-name>default</instance-name>
+        <instance-as>
+          <as>0</as>
+          <four-byte-as>
+            <as>{{ host.facts.bgp.as }}</as>
+            <bgp-running/>
+            <default-vrf>
+              <global>
+                <router-id>{{ host.facts.bgp.rid }}</router-id>
+                <global-afs>
+                  <global-af>
+                    <af-name>ipv4-unicast</af-name>
+                    <enable/>
+                  </global-af>
+                  <global-af>
+                    <af-name>vp-nv4-unicast</af-name>
+                    <enable/>
+                  </global-af>
+                </global-afs>
+              </global>
+              <bgp-entity>
+                <neighbor-groups>
+                  <neighbor-group>
+                    <neighbor-group-name>{{ host.facts.bgp.peergroup }}</neighbor-group-name>
+                    <create/>
+                    <remote-as>
+                      <as-xx>0</as-xx>
+                      <as-yy>{{ host.facts.bgp.as }}</as-yy>
+                    </remote-as>
+                    <update-source-interface>Loopback0</update-source-interface>
+                    <neighbor-group-afs>
+                      <neighbor-group-af>
+                        <af-name>ipv4-unicast</af-name>
+                        <activate/>
+                        <soft-reconfiguration>
+                          <inbound-soft>true</inbound-soft>
+                          <soft-always>false</soft-always>
+                        </soft-reconfiguration>
+                      </neighbor-group-af>
+                      <neighbor-group-af>
+                        <af-name>vp-nv4-unicast</af-name>
+                        <activate/>
+                      </neighbor-group-af>
+                    </neighbor-group-afs>
+                  </neighbor-group>
+                </neighbor-groups>
+                <neighbors>
+                  {% for n in host.facts.bgp.neighbors %}
+                  <neighbor>
+                    <neighbor-address>{{n}}</neighbor-address>
+                    <neighbor-group-add-member>{{ host.facts.bgp.peergroup }}</neighbor-group-add-member>
+                    <neighbor-afs>
+                      <neighbor-af>
+                        <af-name>ipv4-unicast</af-name>
+                        <activate/>
+                      </neighbor-af>
+                      <neighbor-af>
+                        <af-name>vp-nv4-unicast</af-name>
+                        <activate/>
+                      </neighbor-af>
+                    </neighbor-afs>
+                  </neighbor>
+                  {% endfor %}
+                </neighbors>
+              </bgp-entity>
+            </default-vrf>
+            <vrfs>
+            {% for vrf in host.facts.vrfs %}
+              <vrf>
+                <vrf-name>{{vrf.name}}</vrf-name>
+                <vrf-global>
+                  <exists/>
+                  <route-distinguisher>
+                    <type>as</type>
+                    <as-xx>0</as-xx>
+                    <as>{{ host.facts.bgp.as }}</as>
+                    <as-index>{{ vrf.rd }}</as-index>
+                  </route-distinguisher>
+                  <vrf-global-afs>
+                    <vrf-global-af>
+                      <af-name>ipv4-unicast</af-name>
+                      <enable/>
+                      <connected-routes/>
+                      <static-routes/>
+                    </vrf-global-af>
+                  </vrf-global-afs>
+                </vrf-global>
+              </vrf>
+            {% endfor %}
+            </vrfs>
+          </four-byte-as>
+        </instance-as>
+      </instance>
+    </bgp>
+ <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-ospf-cfg">
+      <processes>
+        <process>
+          <process-name>{{ host.facts.ospf.id }}</process-name>
+          <default-vrf>
+            <router-id>{{ host.facts.ospf.rid }}</router-id>
+            {%if host.facts.ospf.ldp_autoconfig =="True"%}
+            <process-scope>
+              <ldp-auto-config/>
+            </process-scope>
+            {%endif%}
+            <area-addresses>
+              <area-area-id>
+                <area-id>{{ host.facts.ospf.area}} </area-id>
+                <running/>
+                <name-scopes>
+                {% for int in host.facts.ospf.interfaces %}
+                  {%if int == "Loopback0" %}
+                  <name-scope>
+                    <interface-name>{{ int }}</interface-name>
+                    <running/>
+                  </name-scope>
+                  {% else %}
+                  <name-scope>
+                    <interface-name>{{ int }}</interface-name>
+                    <running/>
+                    <network-type>point-to-point</network-type>
+                  </name-scope>
+                  {% endif %}
+                {% endfor %}
+                </name-scopes>
+              </area-area-id>
+            </area-addresses>
+          </default-vrf>
+          <start/>
+        </process>
+      </processes>
+    </ospf>
+<mpls-ldp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-mpls-ldp-cfg">
+      <enable/>
+      <global>
+        <entropy-label>
+          <enable/>
+        </entropy-label>
+      </global>
+      <default-vrf>
+      <interfaces>
+      {% for int in host.facts.ospf.interfaces %}
+        {%if int != "Loopback" %}
+          <interface>
+            <interface-name>{{ int }}</interface-name>
+            <enable/>
+          </interface>
+        {% endif %}
+      {% endfor %}
+      </interfaces>
+      </default-vrf>
+    </mpls-ldp>
+ <vrfs xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">
+     {% for vrf in host.facts.vrfs %}
+      <vrf>
+        <vrf-name>{{vrf.name}}</vrf-name>
+        <create/>
+        <description>{{vrf.description}}</description>
+        <afs>
+          <af>
+            <af-name>ipv4</af-name>
+            <saf-name>unicast</saf-name>
+            <topology-name>default</topology-name>
+            <create/>
+            <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-bgp-cfg">
+              <import-route-targets>
+                <route-targets>
+                  <route-target>
+                    <type>as</type>
+                    <as-or-four-byte-as>
+                      <as-xx>0</as-xx>
+                      <as>{{ host.facts.bgp.as }}</as>
+                      <as-index>{{vrf.rt_import}}</as-index>
+                      <stitching-rt>0</stitching-rt>
+                    </as-or-four-byte-as>
+                  </route-target>
+                </route-targets>
+              </import-route-targets>
+              <export-route-targets>
+                <route-targets>
+                  <route-target>
+                    <type>as</type>
+                    <as-or-four-byte-as>
+                      <as-xx>0</as-xx>
+                      <as>{{ host.facts.bgp.as }}</as>
+                      <as-index>{{vrf.rt_export}}</as-index>
+                      <stitching-rt>0</stitching-rt>
+                    </as-or-four-byte-as>
+                  </route-target>
+                </route-targets>
+              </export-route-targets>
+            </bgp>
+          </af>
+        </afs>
+      </vrf>
+      {% endfor %}
+  </vrfs>
+<interface-configurations xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg">
+  {%for int in host.facts.interfaces%}
+    {%if int.type == "Loopback"%} 
+      <interface-configuration>
+        <active>act</active>
+        <interface-name>{{int.name}}</interface-name>
+        <interface-virtual/>
+        <description>{{int.description}}</description>
+        {%if int.vrf !="default"%}
+          <vrf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">{{int.vrf}}</vrf>
+        {%endif%}
+        <ipv4-network xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg">
+          <addresses>
+            <primary>
+              <address>{{int.ip_add}}</address>
+              <netmask>{{int.mask}}</netmask>
+            </primary>
+          </addresses>
+        </ipv4-network>
+      </interface-configuration>
+    {%else%}
+      <interface-configuration>
+        <active>act</active>
+        <interface-name>{{int.name}}</interface-name>
+        <description>{{int.description}}</description>
+        {%if int.vrf !="default"%}
+          <vrf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">{{int.vrf}}</vrf>
+        {%endif%}
+        <ipv4-network xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg">
+          <addresses>
+            <primary>
+              <address>{{int.ip_add}}</address>
+              <netmask>{{int.mask}}</netmask>
+            </primary>
+          </addresses>
+        </ipv4-network>
+      </interface-configuration>
+        {%endif%}
+        {%endfor%}
+    </interface-configurations>
+</config>

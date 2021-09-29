@@ -1,0 +1,169 @@
+
+2021-09-24 13:22:52,284: %UNICON-INFO: +++ JPE3 logfile golden_ops//connection_JPE3.txt +++
+
+2021-09-24 13:22:52,284: %UNICON-INFO: +++ Unicon plugin junos +++
+Password:
+
+2021-09-24 13:22:52,502: %UNICON-INFO: +++ connection to spawn: ssh -l junos 172.20.100.21, id: 140006326576352 +++
+
+2021-09-24 13:22:52,502: %UNICON-INFO: connection to JPE3
+
+--- JUNOS 14.1R1.10 built 2014-06-07 09:37:07 UTC
+junos@JPE3> 
+
+2021-09-24 13:22:52,638: %UNICON-INFO: +++ initializing handle +++
+
+2021-09-24 13:22:52,704: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-length 0' +++
+set cli screen-length 0 
+Screen length set to 0
+
+junos@JPE3> 
+
+2021-09-24 13:22:52,857: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-width 0' +++
+set cli screen-width 0
+                                 ^
+Value 0 is not within range (40..1024) at '0'
+
+junos@JPE3> 
+
+2021-09-24 13:22:53,677: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'show ospf neighbor instance all' +++
+show ospf neighbor instance all 
+Instance: master
+Address          Interface              State     ID               Pri  Dead
+172.20.0.209     ge-0/0/0.0             Full      172.20.100.1       1    39
+
+Instance: client-b
+
+junos@JPE3> 
+
+2021-09-24 13:49:08,766: %UNICON-INFO: +++ JPE3 logfile golden_ops//connection_JPE3.txt +++
+
+2021-09-24 13:49:08,766: %UNICON-INFO: +++ Unicon plugin junos +++
+Password:
+
+2021-09-24 13:49:08,982: %UNICON-INFO: +++ connection to spawn: ssh -l junos 172.20.100.21, id: 140418083755176 +++
+
+2021-09-24 13:49:08,982: %UNICON-INFO: connection to JPE3
+
+--- JUNOS 14.1R1.10 built 2014-06-07 09:37:07 UTC
+junos@JPE3> 
+
+2021-09-24 13:49:09,136: %UNICON-INFO: +++ initializing handle +++
+
+2021-09-24 13:49:09,202: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-length 0' +++
+set cli screen-length 0 
+Screen length set to 0
+
+junos@JPE3> 
+
+2021-09-24 13:49:09,357: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-width 0' +++
+set cli screen-width 0
+                                 ^
+Value 0 is not within range (40..1024) at '0'
+
+junos@JPE3> 
+
+2021-09-24 13:49:10,138: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'show ospf neighbor instance all' +++
+show ospf neighbor instance all 
+Instance: master
+Address          Interface              State     ID               Pri  Dead
+172.20.0.209     ge-0/0/0.0             Full      172.20.100.1       1    31
+
+junos@JPE3> 
+
+2021-09-25 19:49:39,502: %UNICON-INFO: +++ JPE3 logfile golden_ops//connection_JPE3.txt +++
+
+2021-09-25 19:49:39,503: %UNICON-INFO: +++ Unicon plugin junos +++
+Password:
+
+2021-09-25 19:49:39,706: %UNICON-INFO: +++ connection to spawn: ssh -l junos 172.20.100.21, id: 139772826105112 +++
+
+2021-09-25 19:49:39,706: %UNICON-INFO: connection to JPE3
+
+--- JUNOS 14.1R1.10 built 2014-06-07 09:37:07 UTC
+junos@JPE3> 
+
+2021-09-25 19:49:39,853: %UNICON-INFO: +++ initializing handle +++
+
+2021-09-25 19:49:39,917: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-length 0' +++
+set cli screen-length 0 
+Screen length set to 0
+
+junos@JPE3> 
+
+2021-09-25 19:49:40,065: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-width 0' +++
+set cli screen-width 0
+                                 ^
+Value 0 is not within range (40..1024) at '0'
+
+junos@JPE3> 
+
+2021-09-25 19:49:41,134: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'show ospf neighbor detail' +++
+show ospf neighbor detail 
+Address          Interface              State     ID               Pri  Dead
+172.20.0.209     ge-0/0/0.0             Full      172.20.100.1       1    32
+  Area 0.0.0.0, opt 0x52, DR 0.0.0.0, BDR 0.0.0.0
+  Up 09:01:10, adjacent 09:01:10
+
+junos@JPE3> 
+
+2021-09-28 06:46:40,828: %UNICON-INFO: +++ JPE3 logfile golden_ops//connection_JPE3.txt +++
+
+2021-09-28 06:46:40,829: %UNICON-INFO: +++ Unicon plugin junos +++
+Password:
+
+2021-09-28 06:46:41,065: %UNICON-INFO: +++ connection to spawn: ssh -l junos 172.20.100.21, id: 140551952770160 +++
+
+2021-09-28 06:46:41,066: %UNICON-INFO: connection to JPE3
+
+--- JUNOS 14.1R1.10 built 2014-06-07 09:37:07 UTC
+junos@JPE3> 
+
+2021-09-28 06:46:41,244: %UNICON-INFO: +++ initializing handle +++
+
+2021-09-28 06:46:41,308: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-length 0' +++
+set cli screen-length 0 
+Screen length set to 0
+
+junos@JPE3> 
+
+2021-09-28 06:46:41,462: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-width 0' +++
+set cli screen-width 0
+                                 ^
+Value 0 is not within range (40..1024) at '0'
+
+junos@JPE3> 
+
+2021-09-28 06:46:42,561: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'show ldp session' +++
+show ldp session 
+  Address           State        Connection     Hold time  Adv. Mode
+172.20.100.1        Operational  Open             20         DU
+
+junos@JPE3> 
+
+2021-09-28 16:55:27,933: %UNICON-INFO: +++ JPE3 logfile golden_ops//connection_JPE3.txt +++
+
+2021-09-28 16:55:27,933: %UNICON-INFO: +++ Unicon plugin junos +++
+Password:
+
+2021-09-28 16:55:28,155: %UNICON-INFO: +++ connection to spawn: ssh -l junos 172.20.100.21, id: 139875310054088 +++
+
+2021-09-28 16:55:28,155: %UNICON-INFO: connection to JPE3
+
+--- JUNOS 14.1R1.10 built 2014-06-07 09:37:07 UTC
+junos@JPE3> 
+
+2021-09-28 16:55:28,352: %UNICON-INFO: +++ initializing handle +++
+
+2021-09-28 16:55:28,417: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-length 0' +++
+set cli screen-length 0 
+Screen length set to 0
+
+junos@JPE3> 
+
+2021-09-28 16:55:28,569: %UNICON-INFO: +++ JPE3 with alias 'cli': executing command 'set cli screen-width 0' +++
+set cli screen-width 0
+                                 ^
+Value 0 is not within range (40..1024) at '0'
+
+junos@JPE3> 

@@ -1,0 +1,34 @@
+
+2021-09-28 06:46:51,345: %UNICON-INFO: +++ JPE4 logfile golden_ops//connection_JPE4.txt +++
+
+2021-09-28 06:46:51,345: %UNICON-INFO: +++ Unicon plugin junos +++
+Password:
+
+2021-09-28 06:46:51,608: %UNICON-INFO: +++ connection to spawn: ssh -l junos 172.20.100.22, id: 140265522984216 +++
+
+2021-09-28 06:46:51,609: %UNICON-INFO: connection to JPE4
+
+--- JUNOS 14.1R1.10 built 2014-06-07 09:37:07 UTC
+junos@JPE4> 
+
+2021-09-28 06:46:51,915: %UNICON-INFO: +++ initializing handle +++
+
+2021-09-28 06:46:51,983: %UNICON-INFO: +++ JPE4 with alias 'cli': executing command 'set cli screen-length 0' +++
+set cli screen-length 0 
+Screen length set to 0
+
+junos@JPE4> 
+
+2021-09-28 06:46:52,154: %UNICON-INFO: +++ JPE4 with alias 'cli': executing command 'set cli screen-width 0' +++
+set cli screen-width 0
+                                 ^
+Value 0 is not within range (40..1024) at '0'
+
+junos@JPE4> 
+
+2021-09-28 06:46:53,089: %UNICON-INFO: +++ JPE4 with alias 'cli': executing command 'show ldp session' +++
+show ldp session 
+  Address           State        Connection     Hold time  Adv. Mode
+172.20.100.1        Operational  Open             28         DU
+
+junos@JPE4> 

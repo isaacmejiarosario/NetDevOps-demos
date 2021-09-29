@@ -1,0 +1,726 @@
+{
+  "_exclude": [
+    "if_handle",
+    "keepalives",
+    "last_reset",
+    "reset_reason",
+    "foreign_port",
+    "local_port",
+    "msg_rcvd",
+    "msg_sent",
+    "up_down",
+    "bgp_table_version",
+    "routing_table_version",
+    "tbl_ver",
+    "table_version",
+    "memory_usage",
+    "updates",
+    "mss",
+    "total",
+    "total_bytes",
+    "up_time",
+    "bgp_negotiated_keepalive_timers",
+    "hold_time",
+    "keepalive_interval",
+    "sent",
+    "received",
+    "status_codes",
+    "holdtime",
+    "router_id",
+    "connections_dropped",
+    "connections_established",
+    "advertised",
+    "prefixes",
+    "routes",
+    "state_pfxrcd"
+  ],
+  "attributes": null,
+  "commands": null,
+  "connections": null,
+  "context_manager": {},
+  "info": {
+    "instance": {
+      "default": {
+        "bgp_id": 65000,
+        "protocol_state": "RUNNING",
+        "vrf": {
+          "client-a": {
+            "address_family": {
+              "ipv4 unicast": {
+                "client_to_client_reflection": false,
+                "dampening": false
+              }
+            },
+            "always_compare_med": false,
+            "bestpath_compare_routerid": false,
+            "bestpath_cost_community_ignore": false,
+            "cluster_id": "172.20.100.14",
+            "enforce_first_as": true,
+            "fast_external_fallover": true,
+            "log_neighbor_changes": true,
+            "router_id": "172.20.100.14"
+          },
+          "client-b": {
+            "address_family": {
+              "ipv4 unicast": {
+                "client_to_client_reflection": false,
+                "dampening": false
+              }
+            },
+            "always_compare_med": false,
+            "bestpath_compare_routerid": false,
+            "bestpath_cost_community_ignore": false,
+            "cluster_id": "172.20.100.14",
+            "enforce_first_as": true,
+            "fast_external_fallover": true,
+            "log_neighbor_changes": true,
+            "router_id": "172.20.100.14"
+          },
+          "client-c": {
+            "address_family": {
+              "ipv4 unicast": {
+                "client_to_client_reflection": false,
+                "dampening": false
+              }
+            },
+            "always_compare_med": false,
+            "bestpath_compare_routerid": false,
+            "bestpath_cost_community_ignore": false,
+            "cluster_id": "172.20.100.14",
+            "enforce_first_as": true,
+            "fast_external_fallover": true,
+            "log_neighbor_changes": true,
+            "router_id": "172.20.100.14"
+          },
+          "default": {
+            "address_family": {
+              "ipv4 unicast": {
+                "client_to_client_reflection": true,
+                "dampening": false
+              },
+              "vpnv4 unicast": {
+                "client_to_client_reflection": true,
+                "dampening": false
+              }
+            },
+            "cluster_id": "172.20.100.14",
+            "enforce_first_as": true,
+            "fast_external_fallover": true,
+            "log_neighbor_changes": true,
+            "neighbor": {
+              "172.20.100.1": {
+                "address_family": {
+                  "ipv4 unicast": {
+                    "bgp_table_version": 5,
+                    "maximum_prefix_max_prefix_no": 1048576,
+                    "maximum_prefix_restart": 0,
+                    "maximum_prefix_threshold": "75%",
+                    "maximum_prefix_warning_only": true,
+                    "soft_configuration": true
+                  },
+                  "vpnv4 unicast": {
+                    "bgp_table_version": 23,
+                    "maximum_prefix_max_prefix_no": 2097152,
+                    "maximum_prefix_restart": 0,
+                    "maximum_prefix_threshold": "75%",
+                    "maximum_prefix_warning_only": true
+                  }
+                },
+                "bgp_negotiated_capabilities": {
+                  "four_octets_asn": "advertised received",
+                  "route_refresh": "advertised received",
+                  "vpnv4_unicast": "advertised received"
+                },
+                "bgp_neighbor_counters": {
+                  "messages": {
+                    "received": {
+                      "keepalives": 97,
+                      "notifications": 0,
+                      "opens": 1,
+                      "updates": 12
+                    },
+                    "sent": {
+                      "keepalives": 90,
+                      "notifications": 0,
+                      "opens": 1,
+                      "updates": 4
+                    }
+                  }
+                },
+                "bgp_session_transport": {
+                  "connection": {
+                    "connections_dropped": 0,
+                    "connections_established": 1,
+                    "last_reset": "00:00:00",
+                    "state": "established"
+                  },
+                  "transport": {
+                    "foreign_host": "172.20.100.1",
+                    "foreign_port": "179",
+                    "if_handle": "0x00000000",
+                    "local_host": "172.20.100.14",
+                    "local_port": "55509"
+                  }
+                },
+                "holdtime": 180,
+                "keepalive_interval": 60,
+                "local_as_as_no": 65000,
+                "local_as_dual_as": false,
+                "local_as_no_prepend": false,
+                "local_as_replace_as": false,
+                "minimum_neighbor_hold": 3,
+                "remote_as": 65000,
+                "session_state": "established",
+                "up_time": "01:30:39"
+              },
+              "172.20.100.2": {
+                "address_family": {
+                  "ipv4 unicast": {
+                    "bgp_table_version": 0,
+                    "maximum_prefix_max_prefix_no": 1048576,
+                    "maximum_prefix_restart": 0,
+                    "maximum_prefix_threshold": "75%",
+                    "maximum_prefix_warning_only": true,
+                    "soft_configuration": true
+                  },
+                  "vpnv4 unicast": {
+                    "bgp_table_version": 0,
+                    "maximum_prefix_max_prefix_no": 2097152,
+                    "maximum_prefix_restart": 0,
+                    "maximum_prefix_threshold": "75%",
+                    "maximum_prefix_warning_only": true
+                  }
+                },
+                "bgp_neighbor_counters": {
+                  "messages": {
+                    "received": {
+                      "keepalives": 0,
+                      "notifications": 0,
+                      "opens": 0,
+                      "updates": 0
+                    },
+                    "sent": {
+                      "keepalives": 0,
+                      "notifications": 0,
+                      "opens": 0,
+                      "updates": 0
+                    }
+                  }
+                },
+                "bgp_session_transport": {
+                  "connection": {
+                    "connections_dropped": 0,
+                    "connections_established": 0,
+                    "last_reset": "00:00:00",
+                    "state": "established"
+                  },
+                  "transport": {
+                    "foreign_host": "172.20.100.2",
+                    "foreign_port": "0",
+                    "if_handle": "0x00000000",
+                    "local_host": "0.0.0.0",
+                    "local_port": "0"
+                  }
+                },
+                "holdtime": 180,
+                "keepalive_interval": 60,
+                "local_as_as_no": 65000,
+                "local_as_dual_as": false,
+                "local_as_no_prepend": false,
+                "local_as_replace_as": false,
+                "minimum_neighbor_hold": 3,
+                "remote_as": 65000,
+                "session_state": "idle"
+              }
+            },
+            "router_id": "172.20.100.14"
+          }
+        }
+      }
+    }
+  },
+  "routes_per_peer": {
+    "instance": {
+      "default": {
+        "vrf": {
+          "default": {
+            "neighbor": {
+              "172.20.100.1": {
+                "address_family": {
+                  "ipv4 unicast": {
+                    "input_queue": 0,
+                    "msg_rcvd": 110,
+                    "msg_sent": 95,
+                    "output_queue": 0,
+                    "state_pfxrcd": "0",
+                    "tbl_ver": 5,
+                    "up_down": "01:30:41"
+                  },
+                  "vpnv4 unicast": {
+                    "input_queue": 0,
+                    "msg_rcvd": 110,
+                    "msg_sent": 95,
+                    "output_queue": 0,
+                    "state_pfxrcd": "5",
+                    "tbl_ver": 23,
+                    "up_down": "01:30:41"
+                  },
+                  "vpnv4 unicast RD 65000:1": {
+                    "routes": {
+                      "1.1.1.1/32": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.1",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "vpnv4 unicast RD 65000:10013": {
+                    "routes": {
+                      "1.1.1.1/32": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.1",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      },
+                      "1.1.1.13/32": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.13",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      },
+                      "192.168.100.0/30": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.13",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "vpnv4 unicast RD 65000:10014": {
+                    "advertised": {
+                      "1.1.1.14/32": {
+                        "index": {
+                          "1": {
+                            "froms": "Local",
+                            "next_hop": "172.20.100.14",
+                            "origin_code": "?"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "vpnv4 unicast RD 65000:10113": {
+                    "routes": {
+                      "1.1.1.1/32": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.1",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      },
+                      "1.1.1.13/32": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.13",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "vpnv4 unicast RD 65000:10114": {
+                    "advertised": {
+                      "1.1.1.14/32": {
+                        "index": {
+                          "1": {
+                            "froms": "Local",
+                            "next_hop": "172.20.100.14",
+                            "origin_code": "?"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "vpnv4 unicast RD 65000:2": {
+                    "routes": {
+                      "1.1.1.1/32": {
+                        "index": {
+                          "1": {
+                            "locprf": "0",
+                            "next_hop": "172.20.100.1",
+                            "origin_codes": "?",
+                            "path": "0",
+                            "status_codes": "*>i",
+                            "weight": "100"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "remote_as": 65000
+              },
+              "172.20.100.2": {
+                "address_family": {
+                  "ipv4 unicast": {
+                    "input_queue": 0,
+                    "msg_rcvd": 0,
+                    "msg_sent": 0,
+                    "output_queue": 0,
+                    "state_pfxrcd": "Idle",
+                    "tbl_ver": 0,
+                    "up_down": "00:00:00"
+                  },
+                  "vpnv4 unicast": {
+                    "input_queue": 0,
+                    "msg_rcvd": 0,
+                    "msg_sent": 0,
+                    "output_queue": 0,
+                    "state_pfxrcd": "Idle",
+                    "tbl_ver": 0,
+                    "up_down": "00:00:00"
+                  }
+                },
+                "remote_as": 65000
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "table": {
+    "instance": {
+      "default": {
+        "vrf": {
+          "client-a": {
+            "address_family": {
+              "vpnv4 unicast": {
+                "bgp_table_version": 23,
+                "local_as": 65000
+              },
+              "vpnv4 unicast RD 65000:10014": {
+                "default_vrf": "client-a",
+                "prefixes": {
+                  "1.1.1.1/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.1",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.13/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.14/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "0.0.0.0",
+                        "origin_codes": "?",
+                        "status_codes": "*>",
+                        "weight": "32768"
+                      }
+                    }
+                  },
+                  "192.168.100.0/30": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:10014"
+              }
+            }
+          },
+          "client-b": {
+            "address_family": {
+              "vpnv4 unicast": {
+                "bgp_table_version": 23,
+                "local_as": 65000
+              },
+              "vpnv4 unicast RD 65000:10114": {
+                "default_vrf": "client-b",
+                "prefixes": {
+                  "1.1.1.1/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.1",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.13/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.14/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "0.0.0.0",
+                        "origin_codes": "?",
+                        "status_codes": "*>",
+                        "weight": "32768"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:10114"
+              }
+            }
+          },
+          "default": {
+            "address_family": {
+              "vpnv4 unicast": {
+                "bgp_table_version": 23,
+                "local_as": 65000
+              },
+              "vpnv4 unicast RD 65000:1": {
+                "prefixes": {
+                  "1.1.1.1/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.1",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:1"
+              },
+              "vpnv4 unicast RD 65000:10013": {
+                "prefixes": {
+                  "1.1.1.13/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "192.168.100.0/30": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:10013"
+              },
+              "vpnv4 unicast RD 65000:10014": {
+                "default_vrf": "client-a",
+                "prefixes": {
+                  "1.1.1.1/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.1",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.13/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.14/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "0.0.0.0",
+                        "origin_codes": "?",
+                        "status_codes": "*>",
+                        "weight": "32768"
+                      }
+                    }
+                  },
+                  "192.168.100.0/30": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:10014"
+              },
+              "vpnv4 unicast RD 65000:10113": {
+                "prefixes": {
+                  "1.1.1.13/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:10113"
+              },
+              "vpnv4 unicast RD 65000:10114": {
+                "default_vrf": "client-b",
+                "prefixes": {
+                  "1.1.1.1/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.1",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.13/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.13",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  },
+                  "1.1.1.14/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "0.0.0.0",
+                        "origin_codes": "?",
+                        "status_codes": "*>",
+                        "weight": "32768"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:10114"
+              },
+              "vpnv4 unicast RD 65000:2": {
+                "prefixes": {
+                  "1.1.1.1/32": {
+                    "index": {
+                      "1": {
+                        "locprf": "0",
+                        "next_hop": "172.20.100.1",
+                        "origin_codes": "?",
+                        "path": "0",
+                        "status_codes": "*>i",
+                        "weight": "100"
+                      }
+                    }
+                  }
+                },
+                "route_distinguisher": "65000:2"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
