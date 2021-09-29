@@ -3,19 +3,19 @@ pipeline {
   stages {
       stage('Build Config Dev') {
       steps {
-          sh 'bash $WORKSPACE/build-config.sh'
+          sh 'bash $WORKSPACE/build-config-dev.sh'
       }
     }
 
       stage('Test Dev') {
       steps {
-          sh 'bash $WORKSPACE/Test/mpls_l3vpn_easypy_test.py'
+          sh 'bash $WORKSPACE/Test/test-dev.sh'
       }
     }
 
       stage('Deploy Prod'){
       steps{
-        sh 'bash $WORKSPACE/mpls_l3vpn_config.py'
+        sh 'bash $WORKSPACE/build-config-dev.sh'
       }
     }
   }
