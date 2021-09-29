@@ -15,7 +15,7 @@ pipeline {
 
       stage('Deploy Prod'){
       steps{
-        sh 'bash $WORKSPACE/build-config-dev.sh'
+        sh 'bash $WORKSPACE/build-config-prod.sh'
       }
     }
   }
