@@ -9,7 +9,7 @@ pipeline {
 
       stage('Test Dev') {
       steps {
-          sh 'bash $WORKSPACE/Test/test-dev.sh'
+          sh 'bash $WORKSPACE/test-dev.sh'
       }
     }
 
