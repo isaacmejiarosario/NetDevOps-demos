@@ -53,12 +53,12 @@ class BgpTestcase(aetest.Testcase):
                             except Exception as e:
                                 self.failed(f"{device.name} {neighbor} is not active int vrf {vrf}")
 
-class CommonCleanup(aetest.CommonCleanup):
-    @aetest.subsection
-    def disconnect_from_devices(self, testbed):
-        # disconnect_all
-        for device in self.parameters["testbed"].devices.values():
-            device.disconnect()
+#class CommonCleanup(aetest.CommonCleanup):
+#    @aetest.subsection
+#    def disconnect_from_devices(self, testbed):
+#        # disconnect_all
+#        for device in self.parameters["testbed"].devices.values():
+#            device.disconnect()
               
 if __name__ == '__main__':
     topology = load('test-bed.yaml')

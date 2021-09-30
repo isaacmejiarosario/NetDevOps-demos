@@ -1,5 +1,6 @@
 from genie.testbed import load
 from pyats import aetest
+from pyats.async_ import pcall
 from genie.utils import Dq
 import json
 
