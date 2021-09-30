@@ -1,5 +1,6 @@
 #!/bin/bash
-python3 Test/ospf_test_all_vrfs.py
-python3 Test/ldp_test.py
-python3 Test/bgp_test_all_vrfs.py
-python3 Test/ping_test.py
+cd
+python3 ospf_test_all_vrfs.py
+python3 ldp_test.py
+python3 bgp_test_all_vrfs.py
+python3 ping_test.py
