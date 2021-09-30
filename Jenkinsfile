@@ -18,11 +18,13 @@ pipeline {
       }
     }
       stage ("Slack notification") {	
+        steps{
 	      slackSend baseUrl: 'https://hooks.slack.com/services/T02FTAS2SQ7/', 
 	      channel: 'imejia-netdevops-demos', 
 	      color: 'good', 
 	      message: 'The mpls-l3vpn jenkins job has been complted..', 
 	      tokenCredentialId: 'slack-netdevops-demo'
- }
+     }
+   }
   }
 }
