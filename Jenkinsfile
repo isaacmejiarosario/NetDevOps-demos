@@ -7,12 +7,11 @@ pipeline {
       }
     }
 
-      stage('Test Dev') {
-      steps {
-          sh 'bash $WORKSPACE/test-dev.sh'
-      }
-    }
-
+     stage ("Dev Test") {	
+            steps {
+                build 'mpls-l3vpn-pyats-test'
+            }
+        }
       stage('Deploy Prod'){
       steps{
         sh 'bash $WORKSPACE/build-config-prod.sh'
