@@ -1,2 +1,5 @@
 #!/bin/bash
-pyats run job Test/mpls_l3vpn_easypy_test.py --testbed-file Test/test-bed.yaml
+python3 Test/ospf_test_all_vrfs.py
+python3 Test/ldp_test.py
+python3 Test/bgp_test_all_vrfs.py
+python3 Test/ping_test.py
