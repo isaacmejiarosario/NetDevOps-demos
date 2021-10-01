@@ -7,7 +7,6 @@ from nornir_jinja2.plugins.tasks import template_file
 from nornir_utils.plugins.tasks.data import load_yaml
 
 nr = InitNornir(config_file="config.yaml", dry_run=False)
-
 junos_group = nr.filter(F(groups__contains="junos_group"))
 iosxr_group = nr.filter(F(groups__contains="iosxr_group"))
 
@@ -27,7 +26,7 @@ def mpls_config(task):
         intf = task.run(task=template_file, template="intf.j2", path=f"templates/{task.host.platform}/")
         task.run(task=netconf_edit_config, target="candidate", config=intf.result)
         task.run(task=netconf_commit)     
-    else:
+    elif task.host.platform == "junos":
         mpls = task.run(task=template_file, template="mpls-l3vpn.j2", path=f"templates/{task.host.platform}/")
         task.run(task=pyez_config, payload= mpls.result, data_format='xml')
         diff = task.run(task=pyez_diff)
