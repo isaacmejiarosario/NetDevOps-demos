@@ -8,8 +8,13 @@ pipeline {
     }
 
      stage ("Dev Test") {	
+            when {
+              expression {
+                BRANCH_NAME == "dev"
             steps {
                 build 'mpls-l3vpn-pyats-test'
+                }
+              }
             }
         }
       stage('Deploy Prod'){
