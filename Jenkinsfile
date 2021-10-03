@@ -21,17 +21,6 @@ pipeline {
         build 'mpls-l3vpn-pyats-test'
         }
     }
-   
-    stage('Deploy Prod'){
-      when {
-        expression {
-          BRANCH_NAME == "dev"
-            }
-        }
-      steps{
-        sh 'bash $WORKSPACE/deploy-prod.sh'
-      }
-    }
     stage('Release Config'){
       when {
         expression {
