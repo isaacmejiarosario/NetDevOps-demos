@@ -28,7 +28,6 @@ pipeline {
           BRANCH_NAME == "master"
             }
         }
-      steps {
       steps{
         sh 'bash $WORKSPACE/build-config-prod.sh'
       }
