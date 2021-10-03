@@ -25,6 +25,16 @@ pipeline {
     stage('Deploy Prod'){
       when {
         expression {
+          BRANCH_NAME == "dev"
+            }
+        }
+      steps{
+        sh 'bash $WORKSPACE/deploy-prod.sh'
+      }
+    }
+    stage('Release Config'){
+      when {
+        expression {
           BRANCH_NAME == "master"
             }
         }
@@ -32,7 +42,12 @@ pipeline {
         sh 'bash $WORKSPACE/build-config-prod.sh'
       }
     }
-    stage ("Slack notification") {	
+    stage ("Slack notification") {
+      when {
+        expression {
+          BRANCH_NAME == "master"
+            }
+        }
       steps{
 	    slackSend baseUrl: 'https://hooks.slack.com/services/T02FTAS2SQ7/', 
 	    channel: 'imejia-netdevops-demos', 
