@@ -2,12 +2,16 @@ pipeline {
   agent any
   stages {
       stage('Build Config Dev') {
-      steps {
+          when {
+              expression {
+                BRANCH_NAME == "dev"
+          steps {
           sh 'bash $WORKSPACE/build-config-dev.sh'
-      }
-    }
-
-     stage ("Dev Test") {	
+              }
+            }
+          }
+        }
+      stage ("Dev Test") {	
             when {
               expression {
                 BRANCH_NAME == "dev"
